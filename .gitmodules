@@ -1,0 +1,3 @@
+[submodule "Assets/Plugins/DevelopmentTools"]
+	path = Assets/Plugins/DevelopmentTools
+	url = https://github.com/Zatolochnyi-D/UnityDevelopmentTools.git
