@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using Zenject;
 
-namespace HoaR.Game
+namespace HoaR.Game.GoalChecking
 {
     public class GoalChecker : ITickable
     {
