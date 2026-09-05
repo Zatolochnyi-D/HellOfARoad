@@ -11,7 +11,6 @@ namespace HoaR.Ground
 
         void OnTriggerEnter(Collider other)
         {
-            Debug.Log("Ding");
             OnCarEnteredTrigger?.Invoke();
         }
     }
