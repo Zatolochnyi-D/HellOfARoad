@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: DefaultCarSettings
   m_EditorClassIdentifier: Assembly-CSharp::CarSettings
   _generalMovementVector: {x: 0, y: 0, z: 1}
-  _movementSpeed: 5
+  _movementSpeed: 15
