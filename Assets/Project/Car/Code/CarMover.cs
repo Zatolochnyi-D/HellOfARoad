@@ -3,16 +3,15 @@ using Zenject;
 
 public class CarMover : ITickable
 {
-    private static readonly Vector3 GENERAL_MOVEMENT_DIRECTION = new(0f, 0f, 1f);
-    private const float MOVEMENT_SPEED = 5f;
-
     private readonly Transform _carTransform;
+    private readonly CarSettings _carSettings;
 
     private bool _isActive = false;
 
-    public CarMover(Transform carTransform)
+    public CarMover(Transform carTransform, CarSettings carSettings)
     {
         _carTransform = carTransform;
+        _carSettings = carSettings;
     }
 
     public void Enable()
@@ -29,6 +28,6 @@ public class CarMover : ITickable
     {
         if (!_isActive)
             return;
-        _carTransform.position += Time.deltaTime * MOVEMENT_SPEED * GENERAL_MOVEMENT_DIRECTION;
+        _carTransform.position += Time.deltaTime * _carSettings.MovementSpeed * _carSettings.GeneralMovementVector;
     }
 }
