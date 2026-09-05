@@ -3,13 +3,16 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using Zenject;
 
-public class StartingScreenUi : MonoBehaviour, IPointerClickHandler
+namespace HoaR.Game.Ui
 {
-    [Inject] private IGameStateManager<GameState> _stateManager;
-
-    public void OnPointerClick(PointerEventData eventData)
+    public class StartingScreenUi : MonoBehaviour, IPointerClickHandler
     {
-        _stateManager.ChangeState(GameState.Playing);
-        gameObject.SetActive(false);
+        [Inject] private IGameStateManager<GameState> _stateManager;
+
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            _stateManager.ChangeState(GameState.Playing);
+            gameObject.SetActive(false);
+        }
     }
 }

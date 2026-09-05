@@ -1,26 +1,28 @@
-using HoaR.Game;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-public class ProgressBarUi : MonoBehaviour
+namespace HoaR.Game.Ui
 {
-    [SerializeField] private Image _fillableImage;
-
-    [Inject] private readonly GoalChecker _goalChecker;
-
-    void Awake()
+    public class ProgressBarUi : MonoBehaviour
     {
-        _fillableImage.fillAmount = 0f;
-    }
+        [SerializeField] private Image _fillableImage;
 
-    void Start()
-    {
-        _goalChecker.OnDistanceChanged += HandleDistanceChange;
-    }
-    
-    private void HandleDistanceChange(float normalizedDistance)
-    {
-        _fillableImage.fillAmount = normalizedDistance;
+        [Inject] private readonly GoalChecker _goalChecker;
+
+        void Awake()
+        {
+            _fillableImage.fillAmount = 0f;
+        }
+
+        void Start()
+        {
+            _goalChecker.OnDistanceChanged += HandleDistanceChange;
+        }
+
+        private void HandleDistanceChange(float normalizedDistance)
+        {
+            _fillableImage.fillAmount = normalizedDistance;
+        }
     }
 }
