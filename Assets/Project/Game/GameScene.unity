@@ -588,10 +588,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Zenject::Zenject.GameObjectContext
   _scriptableObjectInstallers: []
-  _monoInstallers: []
+  _monoInstallers:
+  - {fileID: 1796941758}
   _installerPrefabs: []
   _autoRun: 1
   _kernel: {fileID: 0}
+--- !u!114 &1796941758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1796941755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac9a5c0484c964a9fba77825df328221, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CarInstaller
 --- !u!1001 &2040483775
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -712,6 +725,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6617865068736505017, guid: b1667ed4d8811459e968f444d31c3d0c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1796941757}
+    - targetCorrespondingSourceObject: {fileID: 6617865068736505017, guid: b1667ed4d8811459e968f444d31c3d0c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1796941758}
   m_SourcePrefab: {fileID: 100100000, guid: b1667ed4d8811459e968f444d31c3d0c, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

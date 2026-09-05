@@ -1,4 +1,4 @@
-using UnityEngine;
+using HoaR.GameStarting;
 using Zenject;
 
 namespace HoaR.Game
@@ -7,6 +7,7 @@ namespace HoaR.Game
     {
         public override void InstallBindings()
         {
+            
         }
     }
 }
