@@ -1,25 +1,17 @@
-using DenZ.DevelopmentTools.Utilities;
-using Zenject;
+using System;
 
 namespace HoaR.Game.GameStateManagement
 {
-    public class GameStateManager
+    public class GameStateManager : IGameStateManager<GameState>
     {
-        private readonly SignalBus _signalBus;
+        public event Action<GameState> OnStateChanged;
 
         private GameState _gameState = GameState.PreGame;
 
-        public GameStateManager(SignalBus signalBus)
-        {
-            _signalBus = signalBus;
-
-            _ = Timers.InvokeOnce(() => ChangeState(GameState.Playing), 2f);
-        }
-
-        private void ChangeState(GameState newState)
+        public void ChangeState(GameState newState)
         {
             _gameState = newState;
-            _signalBus.Fire<GameStateChangeSignal>(new() { NewState = _gameState });
+            OnStateChanged?.Invoke(_gameState);
         }
     }
 }

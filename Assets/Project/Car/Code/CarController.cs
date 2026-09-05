@@ -1,25 +1,24 @@
 using HoaR.Game.GameStateManagement;
 using UnityEngine;
-using Zenject;
 
 namespace HoaR.Car
 {
     public class CarController
     {
-        private readonly SignalBus _signalBus;
+        private readonly IGameStateManager<GameState> _stateManager;
         private readonly CarMover _carMover;
 
-        public CarController(SignalBus signalBus, CarMover carMover)
+        public CarController(IGameStateManager<GameState> stateManager, CarMover carMover)
         {
-            _signalBus = signalBus;
+            _stateManager = stateManager;
             _carMover = carMover;
 
-            _signalBus.Subscribe<GameStateChangeSignal>(HandleStateChange);
+            _stateManager.OnStateChanged += HandleStateChange;
         }
 
-        private void HandleStateChange(GameStateChangeSignal args)
+        private void HandleStateChange(GameState newState)
         {
-            switch (args.NewState)
+            switch (newState)
             {
                 case GameState.Playing:
                     _carMover.Enable();

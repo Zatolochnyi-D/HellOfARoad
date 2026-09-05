@@ -7,9 +7,7 @@ namespace HoaR.Game
     {
         public override void InstallBindings()
         {
-            Container.Bind<GameStateManager>().AsSingle().NonLazy();
-
-            Container.DeclareSignal<GameStateChangeSignal>();
+            Container.Bind<IGameStateManager<GameState>>().To<GameStateManager>().AsSingle();
         }
     }
 }
