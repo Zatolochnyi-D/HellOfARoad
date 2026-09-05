@@ -1,4 +1,4 @@
-using HoaR.GameStarting;
+using HoaR.Game.GameStateManagement;
 using Zenject;
 
 namespace HoaR.Game
@@ -7,7 +7,9 @@ namespace HoaR.Game
     {
         public override void InstallBindings()
         {
-            
+            Container.Bind<GameStateManager>().AsSingle().NonLazy();
+
+            Container.DeclareSignal<GameStateChangeSignal>();
         }
     }
 }
