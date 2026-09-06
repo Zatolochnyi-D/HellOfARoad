@@ -25,6 +25,7 @@ namespace HoaR.Game
 
             Container.Bind<PlayerInputInterceptor>().FromComponentInHierarchy().AsSingle();
             Container.Bind<IHorizontalSwipeProvider>().To<PlayerInputInterceptor>().FromResolve();
+            Container.Bind<IPointerDownUpProvider>().To<PlayerInputInterceptor>().FromResolve();
 
             Container.Bind<GoalChecker>().FromSubContainerResolve().ByMethod(BindGoalChecker).AsSingle().NonLazy();
             Container.Bind<ITickable>().To<GoalChecker>().FromResolve();
