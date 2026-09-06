@@ -7,9 +7,7 @@ namespace HoaR.Turret
     {
         public TurretShooter(InputManager inputManager)
         {
-            inputManager.PointerDownUp.OnStarted += () => Debug.Log("Start shooting");
-            inputManager.PointerDownUp.OnCanceled += () => Debug.Log("End shooting");
+            
         }
-
     }
 }
