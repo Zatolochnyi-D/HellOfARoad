@@ -1,4 +1,3 @@
-using HoaR.InputManagement;
 using Zenject;
 
 namespace HoaR
@@ -8,8 +7,6 @@ namespace HoaR
         public override void InstallBindings()
         {
             SignalBusInstaller.Install(Container);
-
-            Container.Bind<InputManager>().AsSingle();
         }
     }
 }

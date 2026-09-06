@@ -1,6 +1,5 @@
 using HoaR.Game.GameStateManagement;
 using HoaR.Game.GoalChecking;
-using HoaR.Game.InputManagerActivation;
 using HoaR.Ground;
 using HoaR.InputManagement;
 using UnityEngine;
@@ -22,8 +21,6 @@ namespace HoaR.Game
         public override void InstallBindings()
         {
             Container.Bind<IGameStateManager<GameState>>().To<GameStateManager>().AsSingle();
-
-            Container.Bind<GameSceneInputManagerActivator>().AsSingle().NonLazy();
 
             Container.Bind<PlayerInputInterceptor>().FromComponentInHierarchy().AsSingle();
 
