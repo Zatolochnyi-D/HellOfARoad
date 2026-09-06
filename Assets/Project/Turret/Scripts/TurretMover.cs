@@ -1,4 +1,3 @@
-using HoaR.InputManagement;
 using UnityEngine;
 
 namespace HoaR.Turret
@@ -10,12 +9,12 @@ namespace HoaR.Turret
 
         private float _currentRotationValue = 0f;
 
-        public TurretMover(Transform turretTransform, PlayerInputInterceptor playerInputInterception, TurretMoverSettings settings)
+        public TurretMover(Transform turretTransform, IHorizontalSwipeProvider swipeProvider, TurretMoverSettings settings)
         {
             _turretTransform = turretTransform;
             _settings = settings;
 
-            playerInputInterception.OnHorizontalSwipe += HandleVerticalSwipe;
+            swipeProvider.OnHorizontalSwipe += HandleVerticalSwipe;
         }
 
         private void HandleVerticalSwipe(float relativeDelta)

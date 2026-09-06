@@ -2,6 +2,7 @@ using HoaR.Game.GameStateManagement;
 using HoaR.Game.GoalChecking;
 using HoaR.Ground;
 using HoaR.InputManagement;
+using HoaR.Turret;
 using UnityEngine;
 using Zenject;
 
@@ -23,6 +24,7 @@ namespace HoaR.Game
             Container.Bind<IGameStateManager<GameState>>().To<GameStateManager>().AsSingle();
 
             Container.Bind<PlayerInputInterceptor>().FromComponentInHierarchy().AsSingle();
+            Container.Bind<IHorizontalSwipeProvider>().To<PlayerInputInterceptor>().FromResolve();
 
             Container.Bind<GoalChecker>().FromSubContainerResolve().ByMethod(BindGoalChecker).AsSingle().NonLazy();
             Container.Bind<ITickable>().To<GoalChecker>().FromResolve();

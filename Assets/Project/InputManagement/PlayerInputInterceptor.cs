@@ -1,10 +1,11 @@
 using System;
+using HoaR.Turret;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace HoaR.InputManagement
 {
-    public class PlayerInputInterceptor : MonoBehaviour, IDragHandler
+    public class PlayerInputInterceptor : MonoBehaviour, IDragHandler, IHorizontalSwipeProvider
     {
         public event Action<float> OnHorizontalSwipe;
 
