@@ -64,6 +64,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ec4a07e6c7574511966f8262c0f316e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HoaR.Turret.TurretInstaller
+  _turretMoverSettings: {fileID: 11400000, guid: 1043ca82757004986979d27d504a553d, type: 2}
 --- !u!1001 &4992108903063106396
 PrefabInstance:
   m_ObjectHideFlags: 0
