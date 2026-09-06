@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5546550560139608289}
+  - component: {fileID: 5011161845933869325}
+  - component: {fileID: 1377003959909359037}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Untagged
@@ -32,6 +34,36 @@ Transform:
   - {fileID: 4813558433822889143}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5011161845933869325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 718526733792089161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08eca9f7688a0a24685b89133b020c8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Zenject::Zenject.GameObjectContext
+  _scriptableObjectInstallers: []
+  _monoInstallers:
+  - {fileID: 1377003959909359037}
+  _installerPrefabs: []
+  _autoRun: 1
+  _kernel: {fileID: 0}
+--- !u!114 &1377003959909359037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 718526733792089161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ec4a07e6c7574511966f8262c0f316e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HoaR.Turret.TurretInstaller
 --- !u!1001 &4992108903063106396
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -42,15 +74,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: cf6948743a09048f6b2c0720aaaf5d3f, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.74999994
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cf6948743a09048f6b2c0720aaaf5d3f, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.74999994
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cf6948743a09048f6b2c0720aaaf5d3f, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.74999994
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cf6948743a09048f6b2c0720aaaf5d3f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -58,11 +90,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cf6948743a09048f6b2c0720aaaf5d3f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.992
+      value: 0.38
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cf6948743a09048f6b2c0720aaaf5d3f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.21
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cf6948743a09048f6b2c0720aaaf5d3f, type: 3}
       propertyPath: m_LocalRotation.w
