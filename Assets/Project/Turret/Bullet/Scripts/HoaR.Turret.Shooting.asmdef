@@ -1,11 +1,8 @@
 {
-    "name": "HoaR.Turret",
-    "rootNamespace": "HoaR.Turret",
+    "name": "HoaR.Turret.Shooting",
+    "rootNamespace": "HoaR.Turret.Shooting",
     "references": [
-        "GUID:0d8beb7f090555447a6cf5ce9e54dbb4",
-        "GUID:6be00617ce03047a99c7517cf89fc338",
-        "GUID:43a2542ea899747f885ccd2e104c5c9b",
-        "GUID:e1f7c2b71ff2d4ca3a27b0761bac742b"
+        "GUID:0d8beb7f090555447a6cf5ce9e54dbb4"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

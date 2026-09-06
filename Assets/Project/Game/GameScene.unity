@@ -621,6 +621,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4125212512739122456, guid: b1667ed4d8811459e968f444d31c3d0c, type: 3}
+      propertyPath: _bulletSpawnPosition
+      value: 
+      objectReference: {fileID: 1266510729}
     - target: {fileID: 6611342244910108332, guid: b1667ed4d8811459e968f444d31c3d0c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1267,6 +1271,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1208371386}
   m_CullTransparentMesh: 1
+--- !u!4 &1266510729 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4060328021538157660, guid: b1667ed4d8811459e968f444d31c3d0c, type: 3}
+  m_PrefabInstance: {fileID: 464895919}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1749662094
 GameObject:
   m_ObjectHideFlags: 0

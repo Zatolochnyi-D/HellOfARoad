@@ -66,6 +66,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HoaR.Turret.TurretInstaller
   _turretMoverSettings: {fileID: 11400000, guid: 1043ca82757004986979d27d504a553d, type: 2}
+  _bulletPrefab: {fileID: 542133211360568171, guid: d54f14ae3036f46a68a24dccc0b64de1, type: 3}
 --- !u!1 &2916539344398267815
 GameObject:
   m_ObjectHideFlags: 0
