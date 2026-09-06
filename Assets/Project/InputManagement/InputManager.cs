@@ -9,7 +9,15 @@ namespace HoaR.InputManagement
         public InputManager() : base()
         {
             PointerDownUp = new PointerDownUpAction(Inputs.Game.PointerDownUp);
+        }
 
+        public void Activate()
+        {
+            Inputs.Game.Enable();
+        }
+
+        public void Deactivate()
+        {
             Inputs.Game.Enable();
         }
     }

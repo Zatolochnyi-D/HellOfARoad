@@ -1,5 +1,6 @@
 using HoaR.Game.GameStateManagement;
 using HoaR.Game.GoalChecking;
+using HoaR.Game.InputManagerActivation;
 using HoaR.Ground;
 using UnityEngine;
 using Zenject;
@@ -20,6 +21,8 @@ namespace HoaR.Game
         public override void InstallBindings()
         {
             Container.Bind<IGameStateManager<GameState>>().To<GameStateManager>().AsSingle();
+
+            Container.Bind<GameSceneInputManagerActivator>().AsSingle().NonLazy();
 
             Container.Bind<GoalChecker>().FromSubContainerResolve().ByMethod(BindGoalChecker).AsSingle().NonLazy();
             Container.Bind<ITickable>().To<GoalChecker>().FromResolve();
