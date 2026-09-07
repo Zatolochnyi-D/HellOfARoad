@@ -12,13 +12,18 @@ namespace HoaR.Turret
     {
         private readonly BulletFactory _bulletFactory;
         private readonly Transform _bulletSpawnPosition;
+        private readonly TurretShooterSettings _settings;
 
         private CancellationTokenSource _bulletSpawnCancellation;
 
-        public TurretShooter(IPointerDownUpProvider pointerDownUpProvider, BulletFactory bulletFactory, BulletSpawnPosition bulletSpawnPosition)
+        public TurretShooter(IPointerDownUpProvider pointerDownUpProvider,
+                             BulletFactory bulletFactory,
+                             BulletSpawnPosition bulletSpawnPosition,
+                             TurretShooterSettings settings)
         {
             _bulletFactory = bulletFactory;
             _bulletSpawnPosition = bulletSpawnPosition.Value;
+            _settings = settings;
             
             pointerDownUpProvider.OnDown += HandlePointerDown;
             pointerDownUpProvider.OnUp += HandlePointerUp;
@@ -27,7 +32,7 @@ namespace HoaR.Turret
         private void HandlePointerDown()
         {
             _bulletSpawnCancellation = new();
-            _ = Timers.InvokeIndefinitely(() => _bulletFactory.Create(_bulletSpawnPosition), 1f, _bulletSpawnCancellation.Token, true);
+            _ = Timers.InvokeIndefinitely(() => _bulletFactory.Create(_bulletSpawnPosition), _settings.TimeToShoot, _bulletSpawnCancellation.Token, true);
         }
         
         private void HandlePointerUp()
