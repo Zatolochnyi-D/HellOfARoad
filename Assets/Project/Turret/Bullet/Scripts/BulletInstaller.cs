@@ -12,8 +12,12 @@ namespace HoaR.Turret.Shooting
             Container.BindInstance(transform);
             Container.BindInstance(_settings);
             Container.Bind<TrailRenderer>().FromComponentOnRoot().AsSingle();
+            Container.BindInstance(gameObject);
 
-            Container.BindInterfacesAndSelfTo<Bullet>().AsSingle();
+            Container.Bind<BulletPositionHandler>().AsSingle();
+            Container.BindInterfacesAndSelfTo<BulletVisibilityHandler>().AsSingle();
+
+            Container.Bind<Bullet>().AsSingle();
         }
     }
 }

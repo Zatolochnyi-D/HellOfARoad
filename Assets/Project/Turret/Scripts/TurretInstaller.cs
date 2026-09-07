@@ -20,7 +20,7 @@ namespace HoaR.Turret
 
             Container.BindFactory<Transform, Bullet, BulletFactory>()
                      .FromPoolableMemoryPool(x => x.WithInitialSize(15)
-                                                   .WithMaxSize(50)
+                                                   .WithMaxSize(100)
                                                    .ExpandByOneAtATime()
                                                    .FromSubContainerResolve()
                                                    .ByNewContextPrefab(_bulletPrefab));
