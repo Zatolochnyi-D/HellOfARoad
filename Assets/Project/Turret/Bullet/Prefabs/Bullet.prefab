@@ -64,6 +64,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a6a6b56887ca4691a1a816a303ab92c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: HoaR.Turret::BulletInstaller
+  _settings: {fileID: 11400000, guid: ab7fabc113701429183e13cf97566660, type: 2}
 --- !u!1001 &2810803817949759838
 PrefabInstance:
   m_ObjectHideFlags: 0
