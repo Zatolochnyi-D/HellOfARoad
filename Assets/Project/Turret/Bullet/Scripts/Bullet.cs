@@ -9,14 +9,16 @@ namespace HoaR.Turret.Shooting
     {
         private readonly Transform _bulletTransform;
         private readonly BulletSettings _settings;
+        private readonly TrailRenderer _trailRenderer;
 
         private IMemoryPool _parentPool;
         private CancellationTokenSource _flyingCycleCancellation;
 
-        public Bullet(Transform bulletTransform, BulletSettings settings)
+        public Bullet(Transform bulletTransform, BulletSettings settings, TrailRenderer trailRenderer)
         {
             _bulletTransform = bulletTransform;
             _settings = settings;
+            _trailRenderer = trailRenderer;
 
             _bulletTransform.parent = null;
         }
@@ -36,6 +38,7 @@ namespace HoaR.Turret.Shooting
             _bulletTransform.position = spawnPosition.position;
             _bulletTransform.forward = spawnPosition.forward;
             _bulletTransform.gameObject.SetActive(true);
+            _trailRenderer.Clear();
 
             _flyingCycleCancellation = new();
             FlyingCycle(_flyingCycleCancellation.Token);
