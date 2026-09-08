@@ -1,7 +1,9 @@
 {
     "name": "HoaR.LevelManagement",
     "rootNamespace": "HoaR.LevelManagement",
-    "references": [],
+    "references": [
+        "GUID:43a2542ea899747f885ccd2e104c5c9b"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

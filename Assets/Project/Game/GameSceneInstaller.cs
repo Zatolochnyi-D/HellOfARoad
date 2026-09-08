@@ -1,3 +1,4 @@
+using HoaR.Enemies;
 using HoaR.Game.GameStateManagement;
 using HoaR.Game.GoalChecking;
 using HoaR.Game.LevelManagement;
@@ -39,6 +40,8 @@ namespace HoaR.Game
             Container.Bind<ITickable>().To<GoalChecker>().FromResolve();
 
             Container.Bind<GroundExtender>().FromSubContainerResolve().ByMethod(BindGroundExtender).AsSingle().NonLazy();
+
+            Container.Bind<EnemySpawner>().FromSubContainerResolve().ByMethod(BindEnemySpawner).AsSingle().NonLazy();
         }
 
         private void BindGoalChecker(DiContainer subContainer)
@@ -52,6 +55,12 @@ namespace HoaR.Game
         {
             subContainer.BindInstance((_firstGroundTrigger, _secongGroundTrigger));
             subContainer.Bind<GroundExtender>().AsSingle();
+        }
+
+        private void BindEnemySpawner(DiContainer subContainer)
+        {
+            subContainer.BindIFactory<GameObject, Vector3, Enemy>().FromFactory<EnemyFactory>();
+            subContainer.Bind<EnemySpawner>().AsSingle();
         }
     }
 }

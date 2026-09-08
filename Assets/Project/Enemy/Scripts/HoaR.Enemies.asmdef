@@ -1,9 +1,11 @@
 {
-    "name": "HoaR.Enemy",
-    "rootNamespace": "HoaR.Enemy",
+    "name": "HoaR.Enemies",
+    "rootNamespace": "HoaR.Enemies",
     "references": [
         "GUID:0d8beb7f090555447a6cf5ce9e54dbb4",
-        "GUID:24c4c0d606a0849f9b9d29866cff30b8"
+        "GUID:24c4c0d606a0849f9b9d29866cff30b8",
+        "GUID:6be00617ce03047a99c7517cf89fc338",
+        "GUID:43a2542ea899747f885ccd2e104c5c9b"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

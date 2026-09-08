@@ -2,7 +2,8 @@
     "name": "HoaR.GoalChecker",
     "rootNamespace": "HoaR.GoalChecker",
     "references": [
-        "GUID:43a2542ea899747f885ccd2e104c5c9b"
+        "GUID:43a2542ea899747f885ccd2e104c5c9b",
+        "GUID:24c4c0d606a0849f9b9d29866cff30b8"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
