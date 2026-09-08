@@ -30,6 +30,8 @@ namespace HoaR.Game
             Container.BindInstance(_levelSettings);
             Container.BindInstance<LevelOrigin>(new(_levelOriginPosition));
 
+            Container.Bind<Camera>().FromComponentInHierarchy().AsSingle();
+
             Container.Bind<IGameStateManager<GameState>>().To<GameStateManager>().AsSingle();
 
             Container.Bind<PlayerInputInterceptor>().FromComponentInHierarchy().AsSingle();

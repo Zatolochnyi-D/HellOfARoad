@@ -72,7 +72,7 @@ MonoBehaviour:
   m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
-  m_FillOrigin: 1
+  m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!1 &7921114103227422880
@@ -161,6 +161,7 @@ GameObject:
   - component: {fileID: 6055173023692887889}
   - component: {fileID: 8332233986756975309}
   - component: {fileID: 3436090706112305668}
+  - component: {fileID: 214109810892198178}
   m_Layer: 5
   m_Name: HealthBar
   m_TagString: Untagged
@@ -225,3 +226,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: HoaR.HealthSystem::HoaR.HealthSystem.HealthBarUi
   _fillableImage: {fileID: 5532283001424748065}
+--- !u!114 &214109810892198178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8021230123428514547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a3bcd22503d441859979c6f088dd981, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: HoaR.Utilities::HoaR.Utilities.FaceScreenPlane

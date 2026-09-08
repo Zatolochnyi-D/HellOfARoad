@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3df6013c3b59f419cbb7e775805f5d65, type: 3}
   m_Name: DefaultEnemySettings
   m_EditorClassIdentifier: HoaR.Enemies::HoaR.Enemies.EnemySettings
-  _maxHealthPoints: 0
+  _maxHealthPoints: 100
