@@ -1,6 +1,6 @@
 {
-    "name": "HoaR.Game.GameStateManagement",
-    "rootNamespace": "HoaR.Game.GameStateManagement",
+    "name": "HoaR.GameStateManagement",
+    "rootNamespace": "HoaR.GameStateManagement",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],

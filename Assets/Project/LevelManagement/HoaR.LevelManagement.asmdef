@@ -1,6 +1,6 @@
 {
-    "name": "HoaR.Game.LevelManagement",
-    "rootNamespace": "HoaR.Game.LevelManagement",
+    "name": "HoaR.LevelManagement",
+    "rootNamespace": "HoaR.LevelManagement",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -1,0 +1,22 @@
+{
+    "name": "HoaR.Game",
+    "rootNamespace": "HoaR.LevelManagement",
+    "references": [
+        "GUID:0d8beb7f090555447a6cf5ce9e54dbb4",
+        "GUID:c2ca0a67b5b0d4f388e3c87e4eaba706",
+        "GUID:43a2542ea899747f885ccd2e104c5c9b",
+        "GUID:b520552df0c1d417a85f90b3ee347851",
+        "GUID:3d2d882fe005e477aa674472f33c52b2",
+        "GUID:48cd2b471585e492e9164c45b216aa3e",
+        "GUID:d0e4f2baa79a840d89258cee09635351"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
