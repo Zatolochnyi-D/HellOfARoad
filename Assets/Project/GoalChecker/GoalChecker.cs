@@ -1,4 +1,5 @@
 using System;
+using HoaR.LevelManagement;
 using UnityEngine;
 using Zenject;
 
@@ -14,7 +15,7 @@ namespace HoaR.Game.GoalChecking
 
         private readonly float _roadLength;
 
-        public GoalChecker(OriginPosition originPosition, DestinationPosition destinationPosition, TrackedPosition trackedPosition)
+        public GoalChecker(LevelOrigin originPosition, DestinationPosition destinationPosition, TrackedPosition trackedPosition)
         {
             _originPosition = originPosition.Value;
             _destinationPosition = destinationPosition.Value;

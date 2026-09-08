@@ -13,6 +13,51 @@ MonoBehaviour:
   m_Name: Level0
   m_EditorClassIdentifier: HoaR.Game.LevelManagement::HoaR.Game.LevelManagement.LevelSettings
   _levelLength: 200
-  _enemySpawningSettings: []
+  _enemySpawningSettings:
+  - EnemyPrefab: {fileID: 6765326426547370021, guid: 8619f2b18b0994b9bb99726cac159726, type: 3}
+    EnemySpawnRatePerSegment:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0.04423942
+        outSlope: 0.04423942
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.33487093
+        value: 0.014814496
+        inSlope: 0.16910109
+        outSlope: 0.16910109
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.19210781
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.67285997
+        value: 1
+        inSlope: 0.0837497
+        outSlope: 0.0837497
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.3443195
+      - serializedVersion: 3
+        time: 1
+        value: 0.5
+        inSlope: -0.07900222
+        outSlope: -0.07900222
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.27632037
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    MaxEnemyAmount: 40
   _segmentsCount: 5
+  _spawnAreaWidth: 5
   _randomizationSeed: 1421

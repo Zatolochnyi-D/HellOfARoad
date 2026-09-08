@@ -1,7 +1,9 @@
 using HoaR.Game.GameStateManagement;
 using HoaR.Game.GoalChecking;
+using HoaR.Game.LevelManagement;
 using HoaR.Ground;
 using HoaR.InputManagement;
+using HoaR.LevelManagement;
 using HoaR.Turret;
 using UnityEngine;
 using Zenject;
@@ -10,8 +12,11 @@ namespace HoaR.Game
 {
     public class GameSceneInstaller : MonoInstaller
     {
+        [Header("Level")]
+        [SerializeField] private LevelSettings _levelSettings;
+        [SerializeField] private Transform _levelOriginPosition;
+
         [Header("Goal Checker")]
-        [SerializeField] private Transform _originPosition;
         [SerializeField] private Transform _destinationPosition;
         [SerializeField] private Transform _trackedPosition;
 
@@ -21,6 +26,9 @@ namespace HoaR.Game
 
         public override void InstallBindings()
         {
+            Container.BindInstance(_levelSettings);
+            Container.BindInstance<LevelOrigin>(new(_levelOriginPosition));
+
             Container.Bind<IGameStateManager<GameState>>().To<GameStateManager>().AsSingle();
 
             Container.Bind<PlayerInputInterceptor>().FromComponentInHierarchy().AsSingle();
@@ -29,13 +37,12 @@ namespace HoaR.Game
 
             Container.Bind<GoalChecker>().FromSubContainerResolve().ByMethod(BindGoalChecker).AsSingle().NonLazy();
             Container.Bind<ITickable>().To<GoalChecker>().FromResolve();
-            
+
             Container.Bind<GroundExtender>().FromSubContainerResolve().ByMethod(BindGroundExtender).AsSingle().NonLazy();
         }
 
         private void BindGoalChecker(DiContainer subContainer)
         {
-            subContainer.BindInstance<OriginPosition>(new(_originPosition));
             subContainer.BindInstance<DestinationPosition>(new(_destinationPosition));
             subContainer.BindInstance<TrackedPosition>(new(_trackedPosition));
             subContainer.Bind<GoalChecker>().AsSingle();

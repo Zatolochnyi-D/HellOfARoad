@@ -7,7 +7,7 @@ namespace HoaR.Game.LevelManagement
     {
         public GameObject EnemyPrefab;
         public AnimationCurve EnemySpawnRatePerSegment;
-        public int MaxEnemyAmountPerSegment;
+        public int MaxEnemyAmount;
     }
 
     [CreateAssetMenu(fileName = nameof(LevelSettings), menuName = "Project/Level Management/" + nameof(LevelSettings))]
@@ -20,11 +20,13 @@ namespace HoaR.Game.LevelManagement
         [SerializeField] private EnemySpawningSetting[] _enemySpawningSettings;
         [SerializeField] private int _segmentsCount; // whole map length is split into this segments, and the middle of animation curve in this segment
                                                      // is used to determine % of max enemy per segment to spawn.
+        [SerializeField] private float _spawnAreaWidth;
         [SerializeField] private int _randomizationSeed;
 
         public float LevelLength => _levelLength;
         public EnemySpawningSetting[] EnemySpawningSettings => _enemySpawningSettings;
         public int SegmentsCount => _segmentsCount;
+        public float SpawnAreaWidth => _spawnAreaWidth;
         public int RandomizationSeed => _randomizationSeed;
     }
 }
