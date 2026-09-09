@@ -6,6 +6,7 @@ using HoaR.Ground;
 using HoaR.InputManagement;
 using HoaR.LevelManagement;
 using HoaR.Turret;
+using HoaR.Turret.Shooting;
 using UnityEngine;
 using Zenject;
 
@@ -49,6 +50,10 @@ namespace HoaR.Game
             Container.Bind<GroundExtender>().FromSubContainerResolve().ByMethod(BindGroundExtender).AsSingle().NonLazy();
 
             Container.Bind<EnemySpawner>().FromSubContainerResolve().ByMethod(BindEnemySpawner).AsSingle().NonLazy();
+
+            Container.BindInterfacesAndSelfTo<KillCounter>().AsSingle();
+
+            Container.DeclareSignal<KillSignal>();
         }
 
         private void BindGoalChecker(DiContainer subContainer)

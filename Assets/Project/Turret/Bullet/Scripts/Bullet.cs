@@ -21,7 +21,8 @@ namespace HoaR.Turret.Shooting
                       TrailRenderer trailRenderer,
                       BulletPositionHandler positionHandler,
                       BulletVisibilityHandler visibilityHandler,
-                      DamageDealerMb damageDealer)
+                      DamageDealerMb damageDealer,
+                      SignalBus signalBus)
         {
             _settings = settings;
             _trailRenderer = trailRenderer;
@@ -30,6 +31,7 @@ namespace HoaR.Turret.Shooting
             _damageDealer = damageDealer;
 
             _damageDealer.OnHitTarget += () => _parentPool.Despawn(this);
+            _damageDealer.OnKill += () => signalBus.TryFire<KillSignal>();
         }
 
         public void OnSpawned(Transform spawnPosition, IMemoryPool pool)

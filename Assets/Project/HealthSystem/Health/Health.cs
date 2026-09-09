@@ -21,18 +21,22 @@ namespace HoaR.HealthSystem.HealthComponent
             _currentHealth = _settings.MaxHealthPoints;
         }
 
-        public void ReceiveAbsoluteDamage(int damage)
+        public bool ReceiveAbsoluteDamage(int damage)
         {
             _currentHealth -= damage;
             if (_currentHealth <= 0)
+            {
                 OnHealthDepleted?.Invoke();
+                return true;
+            }
             OnDamageReceived?.Invoke(NormalizedHealthPoints);
+            return false;
         }
 
-        public void ReceiveRelativeDamage(float damage)
+        public bool ReceiveRelativeDamage(float damage)
         {
             var actualDamage = Mathf.CeilToInt(_settings.MaxHealthPoints * damage);
-            ReceiveAbsoluteDamage(actualDamage);
+            return ReceiveAbsoluteDamage(actualDamage);
         }
     }
 }

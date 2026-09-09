@@ -1,0 +1,34 @@
+using System;
+using HoaR.Turret.Shooting;
+using UnityEngine;
+using Zenject;
+
+namespace HoaR.Game
+{
+    public class KillCounter : IDisposable
+    {
+        private readonly SignalBus _signalBus;
+
+        private int _killCount = 0;
+
+        public int KillCount => _killCount;
+
+        public KillCounter(SignalBus signalBus)
+        {
+            _signalBus = signalBus;
+
+            _signalBus.Subscribe<KillSignal>(HandleKill);
+        }
+
+        private void HandleKill()
+        {
+            _killCount++;
+            Debug.Log(_killCount);
+        }
+
+        public void Dispose()
+        {
+            _signalBus.Unsubscribe<KillSignal>(HandleKill);
+        }
+    }
+}

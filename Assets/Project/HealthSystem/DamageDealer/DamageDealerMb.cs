@@ -10,6 +10,7 @@ namespace HoaR.HealthSystem.DamageDealing
     public class DamageDealerMb : MonoBehaviour
     {
         public event Action OnHitTarget;
+        public event Action OnKill;
 
         private static Option<T> FindComponentOnObjectOrItsParents<T>(GameObject gameObject) where T : class
         {
@@ -35,11 +36,14 @@ namespace HoaR.HealthSystem.DamageDealing
             var component = FindComponentOnObjectOrItsParents<IDamageReceiver>(other.gameObject);
             component.Apply(x =>
             {
+                var isKill = false;
                 if (_settings.IsRelative)
-                    x.ReceiveRelativeDamage(_settings.RelativeDamage); 
+                    isKill = x.ReceiveRelativeDamage(_settings.RelativeDamage); 
                 else
-                    x.ReceiveAbsoluteDamage(_settings.Damage);
+                    isKill = x.ReceiveAbsoluteDamage(_settings.Damage);
                 OnHitTarget?.Invoke();
+                if (isKill)
+                    OnKill?.Invoke();
             });
         }
     }
