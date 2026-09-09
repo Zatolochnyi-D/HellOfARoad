@@ -2,7 +2,7 @@ using System;
 
 namespace HoaR.HealthSystem
 {
-    public class Health
+    public class Health : IDamageReceiver
     {
         public event Action OnHealthDepleted;
         public event Action<float> OnDamageReceived;

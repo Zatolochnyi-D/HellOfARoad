@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7459e74bf05d4223905b7be19ccba26, type: 3}
   m_Name: DefaultBulletSettings
   m_EditorClassIdentifier: HoaR.Turret.Shooting::HoaR.Turret.Shooting.BulletSettings
-  _flyingSpeed: 50
+  _flyingSpeed: 80
   _timeBeforeDespawn: 7
+  _damage: 34

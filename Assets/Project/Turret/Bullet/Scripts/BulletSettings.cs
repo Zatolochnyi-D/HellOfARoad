@@ -7,8 +7,10 @@ namespace HoaR.Turret.Shooting
     {
         [SerializeField] private float _flyingSpeed = 10f;
         [SerializeField] private float _timeBeforeDespawn = 7f;
+        [SerializeField] private int _damage = 34;
 
         public float FlyingSpeed => _flyingSpeed;
         public float TimeBeforeDespawn => _timeBeforeDespawn;
+        public int Damage => _damage;
     }
 }

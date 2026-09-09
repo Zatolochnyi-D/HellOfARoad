@@ -1,13 +1,16 @@
-using DenZ.DevelopmentTools.Utilities;
 using HoaR.HealthSystem;
+using UnityEngine;
 
 namespace HoaR.Enemies
 {
     public class Enemy
     {
-        public Enemy(Health health)
+        private readonly GameObject _self;
+
+        public Enemy(GameObject self, Health health)
         {
-            _ = Timers.InvokeIndefinitely(() => health.ReceiveAbsoluteDamage(10), 1f);
+            _self = self;
+            health.OnHealthDepleted += () => Object.Destroy(_self);
         }
     }
 }

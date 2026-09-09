@@ -11,6 +11,7 @@ namespace HoaR.Turret.Shooting
         private readonly TrailRenderer _trailRenderer;
         private readonly BulletPositionHandler _positionHandler;
         private readonly BulletVisibilityHandler _visibilityHandler;
+        private readonly BulletDamageDealer _damageDealer;
 
         private IMemoryPool _parentPool;
         private CancellationTokenSource _timeOutDespawnCancellation;
@@ -18,12 +19,16 @@ namespace HoaR.Turret.Shooting
         public Bullet(BulletSettings settings,
                       TrailRenderer trailRenderer,
                       BulletPositionHandler positionHandler,
-                      BulletVisibilityHandler visibilityHandler)
+                      BulletVisibilityHandler visibilityHandler,
+                      BulletDamageDealer damageDealer)
         {
             _settings = settings;
             _trailRenderer = trailRenderer;
             _positionHandler = positionHandler;
             _visibilityHandler = visibilityHandler;
+            _damageDealer = damageDealer;
+
+            _damageDealer.OnBulletHitTarget += () => _parentPool.Despawn(this);
         }
 
         public void OnSpawned(Transform spawnPosition, IMemoryPool pool)

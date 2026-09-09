@@ -16,6 +16,7 @@ namespace HoaR.Turret.Shooting
 
             Container.Bind<BulletPositionHandler>().AsSingle();
             Container.BindInterfacesAndSelfTo<BulletVisibilityHandler>().AsSingle();
+            Container.Bind<BulletDamageDealer>().FromComponentInHierarchy().AsSingle();
 
             Container.Bind<Bullet>().AsSingle();
         }
