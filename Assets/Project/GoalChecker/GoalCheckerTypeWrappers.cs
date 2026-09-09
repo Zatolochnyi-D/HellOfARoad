@@ -4,7 +4,6 @@ using UnityEngine;
 namespace HoaR.GoalChecking
 {
     public class OriginPosition : TypeWrapper<Transform> { public OriginPosition(Transform value) : base(value) { } }
-    public class DestinationPosition : TypeWrapper<Transform> { public DestinationPosition(Transform value) : base(value) { } }
 
     public interface ICarTransformProvider
     {

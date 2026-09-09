@@ -19,9 +19,6 @@ namespace HoaR.Game
         [SerializeField] private Transform _levelOriginPosition;
         [SerializeField] private Transform _carTransform;
 
-        [Header("Goal Checker")]
-        [SerializeField] private Transform _destinationPosition;
-
         [Header("Ground Extender")]
         [SerializeField] private GroundTriggerEnterInterceptor _firstGroundTrigger;
         [SerializeField] private GroundTriggerEnterInterceptor _secongGroundTrigger;
@@ -44,8 +41,7 @@ namespace HoaR.Game
             Container.Bind<IHorizontalSwipeProvider>().To<PlayerInputInterceptor>().FromResolve();
             Container.Bind<IPointerDownUpProvider>().To<PlayerInputInterceptor>().FromResolve();
 
-            Container.Bind<GoalChecker>().FromSubContainerResolve().ByMethod(BindGoalChecker).AsSingle().NonLazy();
-            Container.Bind<ITickable>().To<GoalChecker>().FromResolve();
+            Container.BindInterfacesAndSelfTo<GoalChecker>().AsSingle().NonLazy();
 
             Container.Bind<GroundExtender>().FromSubContainerResolve().ByMethod(BindGroundExtender).AsSingle().NonLazy();
 
@@ -54,12 +50,6 @@ namespace HoaR.Game
             Container.BindInterfacesAndSelfTo<KillCounter>().AsSingle();
 
             Container.DeclareSignal<KillSignal>();
-        }
-
-        private void BindGoalChecker(DiContainer subContainer)
-        {
-            subContainer.BindInstance<DestinationPosition>(new(_destinationPosition));
-            subContainer.Bind<GoalChecker>().AsSingle();
         }
 
         private void BindGroundExtender(DiContainer subContainer)
