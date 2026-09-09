@@ -32,9 +32,9 @@ namespace HoaR.Enemies
 
         private readonly LevelSettings _levelSettings;
         private readonly Transform _levelOrigin;
-        private readonly IFactory<GameObject, Vector3, Enemy> _enemyFactory;
+        private readonly IFactory<GameObject, Vector3, float, Enemy> _enemyFactory;
 
-        public EnemySpawner(LevelSettings levelSettings, LevelOrigin levelOrigin, IFactory<GameObject, Vector3, Enemy> enemyFactory)
+        public EnemySpawner(LevelSettings levelSettings, LevelOrigin levelOrigin, IFactory<GameObject, Vector3, float, Enemy> enemyFactory)
         {
             _levelSettings = levelSettings;
             _levelOrigin = levelOrigin.Value;
@@ -65,7 +65,8 @@ namespace HoaR.Enemies
                           {
                               var vector3d = y.AsX0Y().With(y: _levelOrigin.position.y);
                               var spawnPoint = _levelOrigin.worldToLocalMatrix.MultiplyPoint(vector3d);
-                              _enemyFactory.Create(x.EnemyPrefab, spawnPoint);
+                              var rotation = (float)randomizer.NextDouble() * 360f;
+                              _enemyFactory.Create(x.EnemyPrefab, spawnPoint, rotation);
                           });
             });
         }

@@ -61,7 +61,7 @@ namespace HoaR.Game
 
         private void BindEnemySpawner(DiContainer subContainer)
         {
-            subContainer.BindIFactory<GameObject, Vector3, Enemy>().FromFactory<EnemyFactory>();
+            subContainer.BindIFactory<GameObject, Vector3, float, Enemy>().FromFactory<EnemyFactory>();
             subContainer.Bind<EnemySpawner>().AsSingle();
         }
     }
