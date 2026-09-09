@@ -29,7 +29,7 @@ namespace HoaR.Turret.Shooting
             _visibilityHandler = visibilityHandler;
             _damageDealer = damageDealer;
 
-            _damageDealer.OnBulletHitTarget += () => _parentPool.Despawn(this);
+            _damageDealer.OnHitTarget += () => _parentPool.Despawn(this);
         }
 
         public void OnSpawned(Transform spawnPosition, IMemoryPool pool)

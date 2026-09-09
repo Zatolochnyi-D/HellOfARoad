@@ -1,3 +1,4 @@
+using HoaR.HealthSystem.DamageDealing;
 using HoaR.HealthSystem.HealthComponent;
 using UnityEngine;
 using Zenject;
@@ -13,10 +14,10 @@ namespace HoaR.Enemies
             Container.BindInstance(gameObject);
             Container.BindInstance(transform);
             
-            Container.BindInstance(_enemySettings);
-            Container.Bind<IHealthSettingsProvider>().To<EnemySettings>().FromResolve();
+            Container.BindInterfacesAndSelfTo<EnemySettings>().FromInstance(_enemySettings);
 
             Container.BindInterfacesAndSelfTo<Health>().AsSingle().NonLazy();
+            Container.Bind<DamageDealerMb>().FromComponentInHierarchy().AsSingle();
             Container.Bind<EnemyStateManager>().AsSingle();
             Container.BindInterfacesAndSelfTo<EnemyAngeringHandler>().AsSingle().NonLazy();
             Container.Bind<EnemyMover>().AsSingle().NonLazy();

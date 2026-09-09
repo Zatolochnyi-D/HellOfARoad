@@ -9,7 +9,7 @@ namespace HoaR.HealthSystem.DamageDealing
 {
     public class DamageDealerMb : MonoBehaviour
     {
-        public event Action OnBulletHitTarget;
+        public event Action OnHitTarget;
 
         private static Option<T> FindComponentOnObjectOrItsParents<T>(GameObject gameObject) where T : class
         {
@@ -24,13 +24,16 @@ namespace HoaR.HealthSystem.DamageDealing
             }
             return Option.None<T>();
         }
-
+        
+        [SerializeField] private LayerMask _triggerOn;
         [Inject] private readonly IDamageDealerSettings _settings;
 
-        void OnTriggerEnter(Collider collider)
+        void OnTriggerEnter(Collider other)
         {
-            var component = FindComponentOnObjectOrItsParents<IDamageReceiver>(collider.gameObject);
-            component.Apply(x => { x.ReceiveAbsoluteDamage(_settings.Damage); OnBulletHitTarget?.Invoke(); });
+            if (((1 << other.gameObject.layer) & _triggerOn.value) == 0)
+                return;
+            var component = FindComponentOnObjectOrItsParents<IDamageReceiver>(other.gameObject);
+            component.Apply(x => { x.ReceiveAbsoluteDamage(_settings.Damage); OnHitTarget?.Invoke(); });
         }
     }
 }
