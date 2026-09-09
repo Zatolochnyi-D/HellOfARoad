@@ -7,6 +7,8 @@ namespace HoaR.Game
 {
     public class KillCounter : IDisposable
     {
+        public event Action OnKillRegistered;
+
         private readonly SignalBus _signalBus;
 
         private int _killCount = 0;
@@ -23,7 +25,7 @@ namespace HoaR.Game
         private void HandleKill()
         {
             _killCount++;
-            Debug.Log(_killCount);
+            OnKillRegistered?.Invoke();
         }
 
         public void Dispose()
