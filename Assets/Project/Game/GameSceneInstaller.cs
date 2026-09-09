@@ -1,3 +1,4 @@
+using HoaR.Car;
 using HoaR.Enemies;
 using HoaR.Game.GameStateManagement;
 using HoaR.Game.LevelManagement;
@@ -50,6 +51,8 @@ namespace HoaR.Game
             Container.BindInterfacesAndSelfTo<KillCounter>().AsSingle();
 
             Container.DeclareSignal<KillSignal>();
+            Container.DeclareSignal<PlayerDeadSignal>();
+            Container.DeclareSignal<PlayerReachedDestinationSignal>();
         }
 
         private void BindGroundExtender(DiContainer subContainer)

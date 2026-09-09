@@ -17,6 +17,7 @@ namespace HoaR.Car
 
             Container.BindInterfacesAndSelfTo<CarMover>().AsSingle();
             Container.BindInterfacesAndSelfTo<Health>().AsSingle();
+            Container.Bind<CarHealthListener>().AsSingle().NonLazy();
 
             Container.Bind<CarController>().AsSingle().NonLazy();
         }

@@ -4,6 +4,7 @@ namespace HoaR.Game.GameStateManagement
     {
         PreGame,
         Playing,
-        GameEnded
+        GameWon,
+        GameLost
     }
 }

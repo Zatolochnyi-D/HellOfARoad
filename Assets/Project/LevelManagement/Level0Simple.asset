@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35fff0f7a0cb94054968edd679172d76, type: 3}
+  m_Name: Level0Simple
+  m_EditorClassIdentifier: HoaR.Game.LevelManagement::HoaR.Game.LevelManagement.LevelSettings
+  _levelLength: 200
+  _enemySpawningSettings:
+  - EnemyPrefab: {fileID: 6765326426547370021, guid: 8619f2b18b0994b9bb99726cac159726, type: 3}
+    EnemySpawnRatePerSegment:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 1.0501534
+        outSlope: 1.0501534
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.23174928
+        value: 0.24337229
+        inSlope: 1.2353824
+        outSlope: 1.2353824
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.19210781
+        outWeight: 0.16891289
+      - serializedVersion: 3
+        time: 0.67285997
+        value: 1
+        inSlope: 0.0000050469466
+        outSlope: 0.0000050469466
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.36100873
+      - serializedVersion: 3
+        time: 1
+        value: 0.25
+        inSlope: -0.07900222
+        outSlope: -0.07900222
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.27632037
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    MaxEnemyAmount: 5
+  _segmentsCount: 5
+  _spawnAreaWidth: 10
+  _randomizationSeed: 1421

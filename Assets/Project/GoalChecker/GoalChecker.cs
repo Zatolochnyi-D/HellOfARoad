@@ -13,12 +13,14 @@ namespace HoaR.GoalChecking
         private readonly Transform _originPosition;
         private readonly Transform _carTransform;
         private readonly LevelSettings _levelSettings;
+        private readonly SignalBus _signalBus;
 
-        public GoalChecker(LevelOrigin originPosition, ICarTransformProvider carTransform, LevelSettings levelSettings)
+        public GoalChecker(LevelOrigin originPosition, ICarTransformProvider carTransform, LevelSettings levelSettings, SignalBus signalBus)
         {
             _originPosition = originPosition.Value;
             _carTransform = carTransform.Value;
             _levelSettings = levelSettings;
+            _signalBus = signalBus;
         }
 
         public void Tick()
@@ -26,6 +28,9 @@ namespace HoaR.GoalChecking
             var distancePassed = Vector3.Distance(_originPosition.position, _carTransform.position);
             var normalizedDistancePassed = distancePassed / _levelSettings.LevelLength;
             OnDistanceChanged?.Invoke(Mathf.Clamp01(normalizedDistancePassed));
+            if (normalizedDistancePassed >= 1f)
+                _signalBus.TryFire<PlayerReachedDestinationSignal>();
+
         }
     }
 }
