@@ -1,5 +1,4 @@
 using System.Threading;
-using UnityEditor.UI;
 using UnityEngine;
 
 namespace HoaR.Enemies
@@ -10,6 +9,8 @@ namespace HoaR.Enemies
         private readonly Transform _targetTransform;
         private readonly EnemyStateManager _stateManager;
         private readonly EnemySettings _settings;
+
+        private CancellationTokenSource _runningLoopCancellation;
 
         public EnemyMover(Transform selfTransform, IAngerTrackable angerTrackable, EnemyStateManager stateManager, EnemySettings settings)
         {
@@ -37,9 +38,17 @@ namespace HoaR.Enemies
 
         private void HandleStateChange(EnemyState newState)
         {
-            if (newState == EnemyState.Angered)
+            switch (newState)
             {
-                RunningLoop(default);
+                case EnemyState.Angered:
+                    _runningLoopCancellation = new();
+                    RunningLoop(_runningLoopCancellation.Token);
+                    break;
+                case EnemyState.Dead:
+                    _runningLoopCancellation.Cancel();
+                    break;
+                default:
+                    break;
             }
         }
     }
