@@ -10,8 +10,11 @@ namespace HoaR.Game.GameStateManagement
 
         public void ChangeState(GameState newState)
         {
-            _gameState = newState;
-            OnStateChanged?.Invoke(_gameState);
+            if (_gameState != newState)
+            {
+                _gameState = newState;
+                OnStateChanged?.Invoke(_gameState);
+            }
         }
     }
 }
