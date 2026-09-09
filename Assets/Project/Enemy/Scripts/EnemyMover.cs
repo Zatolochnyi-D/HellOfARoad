@@ -45,7 +45,7 @@ namespace HoaR.Enemies
                     RunningLoop(_runningLoopCancellation.Token);
                     break;
                 case EnemyState.Dead:
-                    _runningLoopCancellation.Cancel();
+                    _runningLoopCancellation?.Cancel();
                     break;
                 default:
                     break;
