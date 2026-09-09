@@ -19,7 +19,7 @@ namespace HoaR.Game
 
         [Header("Goal Checker")]
         [SerializeField] private Transform _destinationPosition;
-        [SerializeField] private Transform _trackedPosition;
+        [SerializeField] private Transform _carTransform;
 
         [Header("Ground Extender")]
         [SerializeField] private GroundTriggerEnterInterceptor _firstGroundTrigger;
@@ -28,7 +28,11 @@ namespace HoaR.Game
         public override void InstallBindings()
         {
             Container.BindInstance(_levelSettings);
+
             Container.BindInstance<LevelOrigin>(new(_levelOriginPosition));
+
+            Container.BindInstance<CarTransform>(new(_carTransform));
+            Container.Bind<IAngerTrackable>().To<CarTransform>().FromResolve();
 
             Container.Bind<Camera>().FromComponentInHierarchy().AsSingle();
 
@@ -49,7 +53,7 @@ namespace HoaR.Game
         private void BindGoalChecker(DiContainer subContainer)
         {
             subContainer.BindInstance<DestinationPosition>(new(_destinationPosition));
-            subContainer.BindInstance<TrackedPosition>(new(_trackedPosition));
+            subContainer.BindInstance<TrackedPosition>(new(_carTransform));
             subContainer.Bind<GoalChecker>().AsSingle();
         }
 

@@ -11,11 +11,14 @@ namespace HoaR.Enemies
         public override void InstallBindings()
         {
             Container.BindInstance(gameObject);
+            Container.BindInstance(transform);
             
-            Container.Bind<IHealthSettingsProvider>().FromInstance(_enemySettings);
+            Container.BindInstance(_enemySettings);
+            Container.Bind<IHealthSettingsProvider>().To<EnemySettings>().FromResolve();
 
             Container.BindInterfacesAndSelfTo<Health>().AsSingle().NonLazy();
             Container.Bind<EnemyStateManager>().AsSingle();
+            Container.BindInterfacesAndSelfTo<EnemyAngeringHandler>().AsSingle().NonLazy();
             Container.Bind<Enemy>().AsSingle();
         }
     }

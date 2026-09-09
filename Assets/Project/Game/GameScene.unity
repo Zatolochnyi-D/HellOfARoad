@@ -925,7 +925,7 @@ MonoBehaviour:
   _levelSettings: {fileID: 11400000, guid: 21038f5122106440e8e0b729b1eba943, type: 2}
   _levelOriginPosition: {fileID: 408413383}
   _destinationPosition: {fileID: 829955771}
-  _trackedPosition: {fileID: 1831573579}
+  _carTransform: {fileID: 1831573579}
   _firstGroundTrigger: {fileID: 228177778}
   _secongGroundTrigger: {fileID: 98666578}
 --- !u!4 &696055882 stripped

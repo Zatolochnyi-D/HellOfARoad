@@ -7,7 +7,9 @@ namespace HoaR.Enemies
     public class EnemySettings : ScriptableObject, IHealthSettingsProvider
     {
         [SerializeField] private int _maxHealthPoints;
+        [SerializeField] private float _angeringDistance;
 
         public int MaxHealthPoints => _maxHealthPoints;
+        public float AngeringDistance => _angeringDistance;
     }
 }
