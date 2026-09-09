@@ -6,16 +6,16 @@ namespace HoaR.Enemies
     public class EnemyMover
     {
         private readonly Transform _selfTransform;
-        private readonly Transform _targetTransform;
+        private readonly IEnemyTarget _target;
         private readonly EnemyStateManager _stateManager;
         private readonly EnemySettings _settings;
 
         private CancellationTokenSource _runningLoopCancellation;
 
-        public EnemyMover(Transform selfTransform, IAngerTrackable angerTrackable, EnemyStateManager stateManager, EnemySettings settings)
+        public EnemyMover(Transform selfTransform, IEnemyTarget target, EnemyStateManager stateManager, EnemySettings settings)
         {
             _selfTransform = selfTransform;
-            _targetTransform = angerTrackable.Value;
+            _target = target;
             _stateManager = stateManager;
             _settings = settings;
 
@@ -26,7 +26,7 @@ namespace HoaR.Enemies
         {
             while (!token.IsCancellationRequested)
             {
-                var directionToTarget = (_targetTransform.position - _selfTransform.position).normalized;
+                var directionToTarget = (_target.Position - _selfTransform.position).normalized;
 
                 var rotateBy = 180f / _settings.TurnAroundTime * Mathf.Deg2Rad * Time.deltaTime;
                 _selfTransform.forward = Vector3.RotateTowards(_selfTransform.forward, directionToTarget, rotateBy, 0f);

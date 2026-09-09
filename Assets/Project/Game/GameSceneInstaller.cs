@@ -33,7 +33,7 @@ namespace HoaR.Game
             Container.BindInstance<LevelOrigin>(new(_levelOriginPosition));
 
             Container.BindInstance<CarTransform>(new(_carTransform));
-            Container.Bind<IAngerTrackable>().To<CarTransform>().FromResolve();
+            Container.Bind<IEnemyTarget>().To<CarTransform>().FromResolve();
             Container.Bind<ICarTransformProvider>().To<CarTransform>().FromResolve();
 
             Container.Bind<Camera>().FromComponentInHierarchy().AsSingle();

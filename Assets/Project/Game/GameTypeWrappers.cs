@@ -5,6 +5,10 @@ using UnityEngine;
 
 namespace HoaR.Game
 {
-    public class CarTransform : TypeWrapper<Transform>, IAngerTrackable, ICarTransformProvider
-    { public CarTransform(Transform value) : base(value) { } }
+    public class CarTransform : TypeWrapper<Transform>, IEnemyTarget, ICarTransformProvider
+    {
+        public CarTransform(Transform value) : base(value) { }
+
+        public Vector3 Position => Value.position;
+    }
 }
