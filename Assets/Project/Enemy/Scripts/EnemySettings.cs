@@ -17,6 +17,8 @@ namespace HoaR.Enemies
         public float AngeringDistance => _angeringDistance;
         public float RunSpeed => _runSpeed;
         public float TurnAroundTime => _turnAroundTime;
+        public bool IsRelative => false;
         public int Damage => _damageToCar;
+        public float RelativeDamage => default;
     }
 }

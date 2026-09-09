@@ -16,3 +16,4 @@ MonoBehaviour:
   _angeringDistance: 10
   _runSpeed: 4
   _turnAroundTime: 0.5
+  _damageToCar: 2

@@ -1,3 +1,4 @@
+using HoaR.HealthSystem.DamageDealing;
 using HoaR.HealthSystem.HealthComponent;
 using UnityEngine;
 using Zenject;
@@ -12,11 +13,19 @@ namespace HoaR.Car
         {
             Container.BindInstance(transform);
             Container.BindInterfacesAndSelfTo<CarSettings>().FromInstance(_carSettings);
+            Container.Bind<IDamageDealerSettings>().To<ScoopDamageDealerSettings>().AsSingle();
 
             Container.BindInterfacesAndSelfTo<CarMover>().AsSingle();
             Container.BindInterfacesAndSelfTo<Health>().AsSingle();
-            
+
             Container.Bind<CarController>().AsSingle().NonLazy();
+        }
+
+        public class ScoopDamageDealerSettings : IDamageDealerSettings
+        {
+            public bool IsRelative => true;
+            public int Damage => default;
+            public float RelativeDamage => 1f;
         }
     }
 }

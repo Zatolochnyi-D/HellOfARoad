@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 namespace HoaR.HealthSystem.HealthComponent
 {
@@ -26,6 +27,12 @@ namespace HoaR.HealthSystem.HealthComponent
             if (_currentHealth <= 0)
                 OnHealthDepleted?.Invoke();
             OnDamageReceived?.Invoke(NormalizedHealthPoints);
+        }
+
+        public void ReceiveRelativeDamage(float damage)
+        {
+            var actualDamage = Mathf.CeilToInt(_settings.MaxHealthPoints * damage);
+            ReceiveAbsoluteDamage(actualDamage);
         }
     }
 }

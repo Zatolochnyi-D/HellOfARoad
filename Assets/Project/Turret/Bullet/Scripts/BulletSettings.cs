@@ -12,6 +12,8 @@ namespace HoaR.Turret.Shooting
 
         public float FlyingSpeed => _flyingSpeed;
         public float TimeBeforeDespawn => _timeBeforeDespawn;
+        public bool IsRelative => false;
         public int Damage => _damage;
+        public float RelativeDamage => default;
     }
 }

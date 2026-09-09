@@ -24,7 +24,7 @@ namespace HoaR.HealthSystem.DamageDealing
             }
             return Option.None<T>();
         }
-        
+
         [SerializeField] private LayerMask _triggerOn;
         [Inject] private readonly IDamageDealerSettings _settings;
 
@@ -33,7 +33,14 @@ namespace HoaR.HealthSystem.DamageDealing
             if (((1 << other.gameObject.layer) & _triggerOn.value) == 0)
                 return;
             var component = FindComponentOnObjectOrItsParents<IDamageReceiver>(other.gameObject);
-            component.Apply(x => { x.ReceiveAbsoluteDamage(_settings.Damage); OnHitTarget?.Invoke(); });
+            component.Apply(x =>
+            {
+                if (_settings.IsRelative)
+                    x.ReceiveRelativeDamage(_settings.RelativeDamage); 
+                else
+                    x.ReceiveAbsoluteDamage(_settings.Damage);
+                OnHitTarget?.Invoke();
+            });
         }
     }
 }
