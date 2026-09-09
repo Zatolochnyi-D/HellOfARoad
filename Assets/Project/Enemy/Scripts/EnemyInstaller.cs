@@ -15,6 +15,7 @@ namespace HoaR.Enemies
             Container.Bind<IHealthSettingsProvider>().FromInstance(_enemySettings);
 
             Container.BindInterfacesAndSelfTo<Health>().AsSingle().NonLazy();
+            Container.Bind<EnemyStateManager>().AsSingle();
             Container.Bind<Enemy>().AsSingle();
         }
     }
