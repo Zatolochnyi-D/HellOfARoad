@@ -1,7 +1,7 @@
 using HoaR.Enemies;
 using HoaR.Game.GameStateManagement;
-using HoaR.Game.GoalChecking;
 using HoaR.Game.LevelManagement;
+using HoaR.GoalChecking;
 using HoaR.Ground;
 using HoaR.InputManagement;
 using HoaR.LevelManagement;
@@ -16,10 +16,10 @@ namespace HoaR.Game
         [Header("Level")]
         [SerializeField] private LevelSettings _levelSettings;
         [SerializeField] private Transform _levelOriginPosition;
+        [SerializeField] private Transform _carTransform;
 
         [Header("Goal Checker")]
         [SerializeField] private Transform _destinationPosition;
-        [SerializeField] private Transform _carTransform;
 
         [Header("Ground Extender")]
         [SerializeField] private GroundTriggerEnterInterceptor _firstGroundTrigger;
@@ -33,6 +33,7 @@ namespace HoaR.Game
 
             Container.BindInstance<CarTransform>(new(_carTransform));
             Container.Bind<IAngerTrackable>().To<CarTransform>().FromResolve();
+            Container.Bind<ICarTransformProvider>().To<CarTransform>().FromResolve();
 
             Container.Bind<Camera>().FromComponentInHierarchy().AsSingle();
 
@@ -53,7 +54,6 @@ namespace HoaR.Game
         private void BindGoalChecker(DiContainer subContainer)
         {
             subContainer.BindInstance<DestinationPosition>(new(_destinationPosition));
-            subContainer.BindInstance<TrackedPosition>(new(_carTransform));
             subContainer.Bind<GoalChecker>().AsSingle();
         }
 

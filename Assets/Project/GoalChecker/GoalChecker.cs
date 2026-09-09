@@ -3,7 +3,7 @@ using HoaR.LevelManagement;
 using UnityEngine;
 using Zenject;
 
-namespace HoaR.Game.GoalChecking
+namespace HoaR.GoalChecking
 {
     public class GoalChecker : ITickable
     {
@@ -11,22 +11,22 @@ namespace HoaR.Game.GoalChecking
 
         private readonly Transform _originPosition;
         private readonly Transform _destinationPosition;
-        private readonly Transform _trackedPosition;
+        private readonly Transform _carTransform;
 
         private readonly float _roadLength;
 
-        public GoalChecker(LevelOrigin originPosition, DestinationPosition destinationPosition, TrackedPosition trackedPosition)
+        public GoalChecker(LevelOrigin originPosition, DestinationPosition destinationPosition, ICarTransformProvider carTransform)
         {
             _originPosition = originPosition.Value;
             _destinationPosition = destinationPosition.Value;
-            _trackedPosition = trackedPosition.Value;
+            _carTransform = carTransform.Value;
 
             _roadLength = Vector3.Distance(_originPosition.position, _destinationPosition.position);
         }
 
         public void Tick()
         {
-            var distancePassed = Vector3.Distance(_originPosition.position, _trackedPosition.position);
+            var distancePassed = Vector3.Distance(_originPosition.position, _carTransform.position);
             var normalizedDistancePassed = distancePassed / _roadLength;
             OnDistanceChanged?.Invoke(Mathf.Clamp01(normalizedDistancePassed));
         }

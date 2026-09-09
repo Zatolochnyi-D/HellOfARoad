@@ -1,4 +1,4 @@
-using HoaR.Game.GoalChecking;
+using HoaR.GoalChecking;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
