@@ -13,3 +13,6 @@ MonoBehaviour:
   m_Name: DefaultEnemySettings
   m_EditorClassIdentifier: HoaR.Enemies::HoaR.Enemies.EnemySettings
   _maxHealthPoints: 100
+  _angeringDistance: 10
+  _runSpeed: 5
+  _turnAroundTime: 0.5

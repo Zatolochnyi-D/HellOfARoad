@@ -16,8 +16,6 @@ namespace HoaR.Enemies
             _target = angerTrackable.Value;
             _settings = settings;
             _stateManager = stateManager;
-
-            _stateManager.OnStateChanged += state => Debug.Log(state);
         }
 
         public void Tick()
