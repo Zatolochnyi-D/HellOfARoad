@@ -1,33 +1,36 @@
 using UnityEngine;
 using Zenject;
 
-public class CarMover : ITickable
+namespace HoaR.Car
 {
-    private readonly Transform _carTransform;
-    private readonly CarSettings _carSettings;
-
-    private bool _isActive = false;
-
-    public CarMover(Transform carTransform, CarSettings carSettings)
+    public class CarMover : ITickable
     {
-        _carTransform = carTransform;
-        _carSettings = carSettings;
-    }
+        private readonly Transform _carTransform;
+        private readonly CarSettings _carSettings;
 
-    public void Enable()
-    {
-        _isActive = true;
-    }
+        private bool _isActive = false;
 
-    public void Disable()
-    {
-        _isActive = false;
-    }
+        public CarMover(Transform carTransform, CarSettings carSettings)
+        {
+            _carTransform = carTransform;
+            _carSettings = carSettings;
+        }
 
-    public void Tick()
-    {
-        if (!_isActive)
-            return;
-        _carTransform.position += Time.deltaTime * _carSettings.MovementSpeed * _carSettings.GeneralMovementVector;
+        public void Enable()
+        {
+            _isActive = true;
+        }
+
+        public void Disable()
+        {
+            _isActive = false;
+        }
+
+        public void Tick()
+        {
+            if (!_isActive)
+                return;
+            _carTransform.position += Time.deltaTime * _carSettings.MovementSpeed * _carSettings.GeneralMovementVector;
+        }
     }
 }

@@ -196,7 +196,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1920968064440424818}
   - component: {fileID: 5122671692792952617}
-  - component: {fileID: 1958120140026537927}
+  - component: {fileID: 8004964527859143317}
   m_Layer: 8
   m_Name: Colliders
   m_TagString: Untagged
@@ -240,7 +240,7 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.05
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1958120140026537927
+--- !u!114 &8004964527859143317
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -249,9 +249,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 6678294990802714694}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cc68108bbe9542af8c5147d56f308e2, type: 3}
+  m_Script: {fileID: 11500000, guid: 323e751e019494416baedf02dcf066b6, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: HoaR.Turret.Shooting::HoaR.Turret.Shooting.BulletDamageDealer
+  m_EditorClassIdentifier: HoaR.HealthSystem::HoaR.HealthSystem.DamageDealing.DamageDealerMb
 --- !u!1001 &2810803817949759838
 PrefabInstance:
   m_ObjectHideFlags: 0

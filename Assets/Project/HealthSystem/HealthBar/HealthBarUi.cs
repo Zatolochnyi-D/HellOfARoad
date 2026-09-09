@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace HoaR.HealthSystem
+namespace HoaR.HealthSystem.HealthComponent
 {
     public class HealthBarUi : MonoBehaviour
     {

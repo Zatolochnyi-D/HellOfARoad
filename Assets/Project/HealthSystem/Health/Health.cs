@@ -1,6 +1,6 @@
 using System;
 
-namespace HoaR.HealthSystem
+namespace HoaR.HealthSystem.HealthComponent
 {
     public class Health : IDamageReceiver
     {

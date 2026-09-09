@@ -1,4 +1,4 @@
-namespace HoaR.HealthSystem
+namespace HoaR.HealthSystem.HealthComponent
 {
     public interface IHealthSettingsProvider
     {

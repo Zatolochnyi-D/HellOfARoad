@@ -1,4 +1,4 @@
-using HoaR.HealthSystem;
+using HoaR.HealthSystem.HealthComponent;
 using UnityEngine;
 using Zenject;
 

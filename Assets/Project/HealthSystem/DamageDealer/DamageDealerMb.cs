@@ -1,13 +1,13 @@
 using System;
 using DenZ.DevelopmentTools.Di;
 using DenZ.DevelopmentTools.Options;
-using HoaR.HealthSystem;
+using HoaR.HealthSystem.HealthComponent;
 using UnityEngine;
 using Zenject;
 
-namespace HoaR.Turret.Shooting
+namespace HoaR.HealthSystem.DamageDealing
 {
-    public class BulletDamageDealer : MonoBehaviour
+    public class DamageDealerMb : MonoBehaviour
     {
         public event Action OnBulletHitTarget;
 
@@ -25,7 +25,7 @@ namespace HoaR.Turret.Shooting
             return Option.None<T>();
         }
 
-        [Inject] private readonly BulletSettings _settings;
+        [Inject] private readonly IDamageDealerSettings _settings;
 
         void OnTriggerEnter(Collider collider)
         {

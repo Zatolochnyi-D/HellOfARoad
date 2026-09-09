@@ -1,5 +1,6 @@
 using System.Threading;
 using DenZ.DevelopmentTools.Utilities;
+using HoaR.HealthSystem.DamageDealing;
 using UnityEngine;
 using Zenject;
 
@@ -11,7 +12,7 @@ namespace HoaR.Turret.Shooting
         private readonly TrailRenderer _trailRenderer;
         private readonly BulletPositionHandler _positionHandler;
         private readonly BulletVisibilityHandler _visibilityHandler;
-        private readonly BulletDamageDealer _damageDealer;
+        private readonly DamageDealerMb _damageDealer;
 
         private IMemoryPool _parentPool;
         private CancellationTokenSource _timeOutDespawnCancellation;
@@ -20,7 +21,7 @@ namespace HoaR.Turret.Shooting
                       TrailRenderer trailRenderer,
                       BulletPositionHandler positionHandler,
                       BulletVisibilityHandler visibilityHandler,
-                      BulletDamageDealer damageDealer)
+                      DamageDealerMb damageDealer)
         {
             _settings = settings;
             _trailRenderer = trailRenderer;
