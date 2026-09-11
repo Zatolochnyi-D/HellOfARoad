@@ -21,7 +21,7 @@ namespace HoaR.Enemies
             Container.Bind<EnemyStateManager>().AsSingle();
             Container.BindInterfacesAndSelfTo<EnemyAngeringHandler>().AsSingle().NonLazy();
             Container.Bind<EnemyMover>().AsSingle().NonLazy();
-            Container.Bind<Enemy>().AsSingle();
+            Container.Bind<Enemy>().AsSingle().NonLazy();
         }
     }
 }
