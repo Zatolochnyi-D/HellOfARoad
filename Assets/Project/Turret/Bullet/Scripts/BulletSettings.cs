@@ -4,7 +4,7 @@ using UnityEngine;
 namespace HoaR.Turret.Shooting
 {
     [CreateAssetMenu(fileName = nameof(BulletSettings), menuName = "Project/Bullet/" + nameof(BulletSettings))]
-    public class BulletSettings : ScriptableObject, IDamageDealerSettings
+    public class BulletSettings : ScriptableObject, IDamageDealerSettings, IRaycastDamageDealerSettings
     {
         [SerializeField] private float _flyingSpeed = 10f;
         [SerializeField] private float _timeBeforeDespawn = 7f;
@@ -17,5 +17,6 @@ namespace HoaR.Turret.Shooting
         public int Damage => _damage;
         public float RelativeDamage => default;
         public LayerMask TriggerOn => _triggerAttackOn;
+        public float RaycastLength => _flyingSpeed * Time.fixedDeltaTime;
     }
 }

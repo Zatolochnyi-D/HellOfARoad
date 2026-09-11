@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DefaultBulletSettings
   m_EditorClassIdentifier: HoaR.Turret.Shooting::HoaR.Turret.Shooting.BulletSettings
   _flyingSpeed: 80
-  _timeBeforeDespawn: 7
+  _timeBeforeDespawn: 3
   _damage: 34
   _triggerAttackOn:
     serializedVersion: 2

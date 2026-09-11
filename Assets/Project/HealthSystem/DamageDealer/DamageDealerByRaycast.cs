@@ -17,14 +17,16 @@ namespace HoaR.HealthSystem.DamageDealing
 
         private readonly Transform _selfTransform;
         private readonly IDamageDealerSettings _settings;
+        private readonly IRaycastDamageDealerSettings _raycastSettings;
 
         private CancellationTokenSource _raycastLoopCancellation;
         private bool _hitWasDone = false;
 
-        public DamageDealerByRaycast(Transform selfTransform, IDamageDealerSettings settings)
+        public DamageDealerByRaycast(Transform selfTransform, IDamageDealerSettings settings, IRaycastDamageDealerSettings raycastSettings)
         {
             _selfTransform = selfTransform;
             _settings = settings;
+            _raycastSettings = raycastSettings;
         }
 
         private void LookForToDoDamage()
@@ -32,7 +34,7 @@ namespace HoaR.HealthSystem.DamageDealing
             if (_hitWasDone)
                 return;
 
-            var hits = Physics.RaycastNonAlloc(_selfTransform.position, _selfTransform.forward, RAYCAST_BUFFER, 80f * Time.fixedDeltaTime, _settings.TriggerOn);
+            var hits = Physics.RaycastNonAlloc(_selfTransform.position, _selfTransform.forward, RAYCAST_BUFFER, _raycastSettings.RaycastLength, _settings.TriggerOn);
 
             if (hits != 0)
             {
