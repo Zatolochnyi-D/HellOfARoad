@@ -14,10 +14,12 @@ namespace HoaR.Car
             Container.BindInstance(transform);
             Container.BindInterfacesAndSelfTo<CarSettings>().FromInstance(_carSettings);
             Container.Bind<IDamageDealerSettings>().To<ScoopDamageDealerSettings>().AsSingle();
+            Container.Bind<Animator>().FromComponentInHierarchy().AsSingle();
 
             Container.BindInterfacesAndSelfTo<CarMover>().AsSingle();
             Container.BindInterfacesAndSelfTo<Health>().AsSingle();
             Container.Bind<CarHealthListener>().AsSingle().NonLazy();
+            Container.Bind<CarAnimator>().AsSingle().NonLazy();
 
             Container.Bind<CarController>().AsSingle().NonLazy();
         }

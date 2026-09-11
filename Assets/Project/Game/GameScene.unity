@@ -779,10 +779,62 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 849601523359094504, guid: b1667ed4d8811459e968f444d31c3d0c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -0.00005965046
+      objectReference: {fileID: 0}
+    - target: {fileID: 849601523359094504, guid: b1667ed4d8811459e968f444d31c3d0c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -0.00003509805
+      objectReference: {fileID: 0}
+    - target: {fileID: 849601523359094504, guid: b1667ed4d8811459e968f444d31c3d0c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: 2385671705409068915, guid: b1667ed4d8811459e968f444d31c3d0c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -89.99999
+      objectReference: {fileID: 0}
+    - target: {fileID: 2385671705409068915, guid: b1667ed4d8811459e968f444d31c3d0c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -89.99991
+      objectReference: {fileID: 0}
+    - target: {fileID: 2385671705409068915, guid: b1667ed4d8811459e968f444d31c3d0c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4125212512739122456, guid: b1667ed4d8811459e968f444d31c3d0c, type: 3}
       propertyPath: _bulletSpawnPosition
       value: 
       objectReference: {fileID: 1266510729}
+    - target: {fileID: 4260015463526142066, guid: b1667ed4d8811459e968f444d31c3d0c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -0.000059650472
+      objectReference: {fileID: 0}
+    - target: {fileID: 4260015463526142066, guid: b1667ed4d8811459e968f444d31c3d0c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -0.00003509805
+      objectReference: {fileID: 0}
+    - target: {fileID: 4260015463526142066, guid: b1667ed4d8811459e968f444d31c3d0c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: 5946385705275809375, guid: b1667ed4d8811459e968f444d31c3d0c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 3.4103775e-34
+      objectReference: {fileID: 0}
+    - target: {fileID: 5946385705275809375, guid: b1667ed4d8811459e968f444d31c3d0c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0.00002367829
+      objectReference: {fileID: 0}
+    - target: {fileID: 5946385705275809375, guid: b1667ed4d8811459e968f444d31c3d0c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -1.650459e-27
+      objectReference: {fileID: 0}
+    - target: {fileID: 6332884478204066357, guid: b1667ed4d8811459e968f444d31c3d0c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -89.98021
+      objectReference: {fileID: 0}
     - target: {fileID: 6611342244910108332, guid: b1667ed4d8811459e968f444d31c3d0c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -826,6 +878,30 @@ PrefabInstance:
     - target: {fileID: 6617865068736505017, guid: b1667ed4d8811459e968f444d31c3d0c, type: 3}
       propertyPath: m_Name
       value: Car
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918404883734272666, guid: b1667ed4d8811459e968f444d31c3d0c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -89.99999
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918404883734272666, guid: b1667ed4d8811459e968f444d31c3d0c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -89.99989
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918404883734272666, guid: b1667ed4d8811459e968f444d31c3d0c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7162806971091465059, guid: b1667ed4d8811459e968f444d31c3d0c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -0.000015258788
+      objectReference: {fileID: 0}
+    - target: {fileID: 7162806971091465059, guid: b1667ed4d8811459e968f444d31c3d0c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 179.99995
+      objectReference: {fileID: 0}
+    - target: {fileID: 7162806971091465059, guid: b1667ed4d8811459e968f444d31c3d0c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -179.99998
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1015,7 +1091,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba1a1d2f375ef495694cbbf0099a6c9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameSceneInstaller
-  _levelSettings: {fileID: 11400000, guid: 5390e19d276c2497c8476569789d1941, type: 2}
+  _levelSettings: {fileID: 11400000, guid: 21038f5122106440e8e0b729b1eba943, type: 2}
   _levelOriginPosition: {fileID: 408413383}
   _carTransform: {fileID: 1831573579}
   _firstGroundTrigger: {fileID: 228177778}
