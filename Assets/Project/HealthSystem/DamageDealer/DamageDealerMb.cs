@@ -7,24 +7,10 @@ using Zenject;
 
 namespace HoaR.HealthSystem.DamageDealing
 {
-    public class DamageDealerMb : MonoBehaviour
+    public class DamageDealerMb : MonoBehaviour, IDamageDealer
     {
         public event Action OnHitTarget;
         public event Action OnKill;
-
-        private static Option<T> FindComponentOnObjectOrItsParents<T>(GameObject gameObject) where T : class
-        {
-            var currentObject = gameObject;
-            while (currentObject != null)
-            {
-                var component = currentObject.TryGetFromPossibleContainerless<T>();
-                if (component.IsSome)
-                    return component.ValueUnsafe;
-                else
-                    currentObject = currentObject.transform.parent != null ? currentObject.transform.parent.gameObject : null;
-            }
-            return Option.None<T>();
-        }
 
         [SerializeField] private LayerMask _triggerOn;
         [Inject] private readonly IDamageDealerSettings _settings;
@@ -33,7 +19,7 @@ namespace HoaR.HealthSystem.DamageDealing
         {
             if (((1 << other.gameObject.layer) & _triggerOn.value) == 0)
                 return;
-            var component = FindComponentOnObjectOrItsParents<IDamageReceiver>(other.gameObject);
+            var component = other.gameObject.FindFromContainerOnObjectOrItsParents<IDamageReceiver>();
             component.Apply(x =>
             {
                 var isKill = false;
