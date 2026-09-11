@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace HoaR.HealthSystem.DamageDealing
 {
     public interface IDamageDealerSettings
@@ -5,5 +7,6 @@ namespace HoaR.HealthSystem.DamageDealing
         public bool IsRelative { get; }
         public int Damage { get; }
         public float RelativeDamage { get; }
+        public LayerMask TriggerOn { get; }
     }
 }

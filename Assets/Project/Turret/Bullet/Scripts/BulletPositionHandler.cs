@@ -1,4 +1,3 @@
-using System.Threading;
 using UnityEngine;
 
 namespace HoaR.Turret.Shooting
@@ -7,24 +6,15 @@ namespace HoaR.Turret.Shooting
     {
         private readonly Transform _bulletTransform;
         private readonly BulletSettings _settings;
+        private readonly Rigidbody _rigidbody;
 
-        private CancellationTokenSource _flyingCycleCancellation;
-
-        public BulletPositionHandler(Transform bulletTransform, BulletSettings settings)
+        public BulletPositionHandler(Transform bulletTransform, BulletSettings settings, Rigidbody rigidbody)
         {
             _bulletTransform = bulletTransform;
             _settings = settings;
+            _rigidbody = rigidbody;
 
             _bulletTransform.parent = null;
-        }
-
-        private async void FlyingCycle(CancellationToken token)
-        {
-            while (!token.IsCancellationRequested)
-            {
-                _bulletTransform.position += _settings.FlyingSpeed * Time.deltaTime * _bulletTransform.forward;
-                await Awaitable.NextFrameAsync();
-            }
         }
 
         public void Spawn(Transform spawnPosition)
@@ -35,14 +25,12 @@ namespace HoaR.Turret.Shooting
 
         public void StartFly()
         {
-            _flyingCycleCancellation = new();
-            FlyingCycle(_flyingCycleCancellation.Token);
+            _rigidbody.linearVelocity = _settings.FlyingSpeed * _bulletTransform.forward;
         }
 
         public void StopFly()
         {
-            _flyingCycleCancellation.Cancel();
-            _flyingCycleCancellation = null;
+            _rigidbody.linearVelocity = Vector2.zero;
         }
     }
 }

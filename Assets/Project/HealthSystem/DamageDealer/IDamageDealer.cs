@@ -6,5 +6,8 @@ namespace HoaR.HealthSystem.DamageDealing
     {
         public event Action OnHitTarget;
         public event Action OnKill;
+
+        public void Activate();
+        public void Deactivate();
     }
 }

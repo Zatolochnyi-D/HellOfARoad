@@ -1,5 +1,3 @@
-using System.Threading;
-using DenZ.DevelopmentTools.Utilities;
 using UnityEngine;
 using Zenject;
 
@@ -8,7 +6,6 @@ namespace HoaR.Turret.Shooting
     public class BulletVisibilityHandler : IInitializable
     {
         private readonly GameObject _bullet;
-
 
         public BulletVisibilityHandler(GameObject bullet)
         {

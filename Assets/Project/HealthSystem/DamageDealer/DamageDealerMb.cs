@@ -12,12 +12,15 @@ namespace HoaR.HealthSystem.DamageDealing
         public event Action OnHitTarget;
         public event Action OnKill;
 
-        [SerializeField] private LayerMask _triggerOn;
         [Inject] private readonly IDamageDealerSettings _settings;
+
+        private bool _active = true;
 
         void OnTriggerEnter(Collider other)
         {
-            if (((1 << other.gameObject.layer) & _triggerOn.value) == 0)
+            if (!_active)
+                return;
+            if (((1 << other.gameObject.layer) & _settings.TriggerOn.value) == 0)
                 return;
             var component = other.gameObject.FindFromContainerOnObjectOrItsParents<IDamageReceiver>();
             component.Apply(x =>
@@ -31,6 +34,16 @@ namespace HoaR.HealthSystem.DamageDealing
                 if (isKill)
                     OnKill?.Invoke();
             });
+        }
+
+        public void Activate()
+        {
+            _active = true;
+        }
+
+        public void Deactivate()
+        {
+            _active = false;
         }
     }
 }

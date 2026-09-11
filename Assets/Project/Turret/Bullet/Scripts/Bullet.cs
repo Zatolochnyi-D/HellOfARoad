@@ -12,7 +12,7 @@ namespace HoaR.Turret.Shooting
         private readonly TrailRenderer _trailRenderer;
         private readonly BulletPositionHandler _positionHandler;
         private readonly BulletVisibilityHandler _visibilityHandler;
-        private readonly DamageDealerMb _damageDealer;
+        private readonly IDamageDealer _damageDealer;
 
         private IMemoryPool _parentPool;
         private CancellationTokenSource _timeOutDespawnCancellation;
@@ -21,7 +21,7 @@ namespace HoaR.Turret.Shooting
                       TrailRenderer trailRenderer,
                       BulletPositionHandler positionHandler,
                       BulletVisibilityHandler visibilityHandler,
-                      DamageDealerMb damageDealer,
+                      IDamageDealer damageDealer,
                       SignalBus signalBus)
         {
             _settings = settings;
@@ -42,6 +42,7 @@ namespace HoaR.Turret.Shooting
             _trailRenderer.Clear();
 
             _positionHandler.StartFly();
+            _damageDealer.Activate();
 
             _timeOutDespawnCancellation = new();
             _ = Timers.InvokeOnce(() => _parentPool.Despawn(this), _settings.TimeBeforeDespawn, _timeOutDespawnCancellation.Token);
@@ -53,6 +54,7 @@ namespace HoaR.Turret.Shooting
             _timeOutDespawnCancellation = null;
             _positionHandler.StopFly();
             _visibilityHandler.Hide();
+            _damageDealer.Deactivate();
         }
     }
 }

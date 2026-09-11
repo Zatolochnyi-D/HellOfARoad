@@ -9,11 +9,13 @@ namespace HoaR.Turret.Shooting
         [SerializeField] private float _flyingSpeed = 10f;
         [SerializeField] private float _timeBeforeDespawn = 7f;
         [SerializeField] private int _damage = 34;
+        [SerializeField] private LayerMask _triggerAttackOn;
 
         public float FlyingSpeed => _flyingSpeed;
         public float TimeBeforeDespawn => _timeBeforeDespawn;
         public bool IsRelative => false;
         public int Damage => _damage;
         public float RelativeDamage => default;
+        public LayerMask TriggerOn => _triggerAttackOn;
     }
 }

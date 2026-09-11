@@ -12,6 +12,7 @@ namespace HoaR.Enemies
         [SerializeField] private float _runSpeed;
         [SerializeField] private float _turnAroundTime; // Time for enemy to rotate by 180°.
         [SerializeField] private int _damageToCar;
+        [SerializeField] private LayerMask _triggerAttackOn;
 
         public int MaxHealthPoints => _maxHealthPoints;
         public float AngeringDistance => _angeringDistance;
@@ -20,5 +21,6 @@ namespace HoaR.Enemies
         public bool IsRelative => false;
         public int Damage => _damageToCar;
         public float RelativeDamage => default;
+        public LayerMask TriggerOn => _triggerAttackOn;
     }
 }

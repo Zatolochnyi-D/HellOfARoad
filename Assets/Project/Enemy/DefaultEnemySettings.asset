@@ -17,3 +17,6 @@ MonoBehaviour:
   _runSpeed: 4
   _turnAroundTime: 0.5
   _damageToCar: 2
+  _triggerAttackOn:
+    serializedVersion: 2
+    m_Bits: 512

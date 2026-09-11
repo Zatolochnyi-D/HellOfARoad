@@ -29,6 +29,7 @@ namespace HoaR.Car
             public bool IsRelative => true;
             public int Damage => default;
             public float RelativeDamage => 1f;
+            public LayerMask TriggerOn => LayerMask.NameToLayer("Enemy");
         }
     }
 }
