@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: DefaultTurretMoverSettings
   m_EditorClassIdentifier: HoaR.Turret::HoaR.Turret.TurretMoverSettings
   _maxDeviation: 80
-  _relativeDistanceForMaxEffect: 0.5
+  _relativeDistanceForMaxEffect: 0.75

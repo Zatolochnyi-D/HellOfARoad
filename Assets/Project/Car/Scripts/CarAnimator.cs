@@ -41,7 +41,6 @@ namespace HoaR.Car
         private void StartAnimation()
         {
             var wheelSpeed = _settings.MovementSpeed / (2f * Mathf.PI * _settings.WheelRadius);
-            Debug.Log(wheelSpeed);
             _animator.SetFloat(WHEEL_SPEED_PARAMETER_HASH, wheelSpeed);
             _animator.Play(WHEEL_CLIP_HASH, WHEEL_LAYER, 0f);
 

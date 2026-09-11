@@ -140,7 +140,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HoaR.Car.CarInstaller
   _carSettings: {fileID: 11400000, guid: 09838bc1384834661b373edbe4703e9a, type: 2}
-  _shakeClip: {fileID: 5998576335854482252, guid: 66c81a8edd4bc4a248b1676155925f29, type: 3}
 --- !u!54 &3337795902737256166
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -292,7 +291,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5546550560139608289, guid: 78e0eab897ff043bbb3f7099038cb169, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.62
+      value: 0.522
       objectReference: {fileID: 0}
     - target: {fileID: 5546550560139608289, guid: 78e0eab897ff043bbb3f7099038cb169, type: 3}
       propertyPath: m_LocalPosition.z
