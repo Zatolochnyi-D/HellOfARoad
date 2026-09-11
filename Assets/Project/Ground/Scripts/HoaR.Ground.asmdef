@@ -1,7 +1,10 @@
 {
     "name": "HoaR.Ground",
     "rootNamespace": "HoaR.Ground",
-    "references": [],
+    "references": [
+        "GUID:24c4c0d606a0849f9b9d29866cff30b8",
+        "GUID:43a2542ea899747f885ccd2e104c5c9b"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

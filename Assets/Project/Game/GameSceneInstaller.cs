@@ -23,6 +23,7 @@ namespace HoaR.Game
         [Header("Ground Extender")]
         [SerializeField] private GroundTriggerEnterInterceptor _firstGroundTrigger;
         [SerializeField] private GroundTriggerEnterInterceptor _secongGroundTrigger;
+        [SerializeField] private GroundTriggerEnterInterceptor _thirdGroundTrigger;
 
         public override void InstallBindings()
         {
@@ -57,7 +58,7 @@ namespace HoaR.Game
 
         private void BindGroundExtender(DiContainer subContainer)
         {
-            subContainer.BindInstance((_firstGroundTrigger, _secongGroundTrigger));
+            subContainer.BindInstance((_firstGroundTrigger, _secongGroundTrigger, _thirdGroundTrigger));
             subContainer.Bind<GroundExtender>().AsSingle();
         }
 

@@ -1,41 +1,31 @@
+using HoaR.LevelManagement;
 using UnityEngine;
 
 namespace HoaR.Ground
 {
     public class GroundExtender
     {
-        private readonly (GroundTriggerEnterInterceptor first, GroundTriggerEnterInterceptor second) _groundTriggerPair;
+        private readonly Transform _levelOrigin;
 
-        private readonly Vector3 _startingPosition;
-        private readonly Vector3 _extensionDirection;
         private readonly float _extensionDistance;
 
-        private int _extensionCount = 2;
-
-        public GroundExtender((GroundTriggerEnterInterceptor, GroundTriggerEnterInterceptor) groundTriggerPair)
+        public GroundExtender(LevelOrigin levelOrigin,
+                             (GroundTriggerEnterInterceptor, GroundTriggerEnterInterceptor, GroundTriggerEnterInterceptor) groundTriggerPair)
         {
-            _groundTriggerPair = groundTriggerPair;
+            _levelOrigin = levelOrigin.Value;
 
-            var (first, second) = _groundTriggerPair;
-            _startingPosition = first.GroundTransform.position;
+            var (first, second, third) = groundTriggerPair;
             var vectorDifference = second.GroundTransform.position - first.GroundTransform.position;
-            _extensionDirection = vectorDifference.normalized;
             _extensionDistance = vectorDifference.magnitude;
-
-            first.OnCarEnteredTrigger += HandleFirstTriggerEnter;
-            second.OnCarEnteredTrigger += HandleSecondTriggerEnter;
+            
+            first.OnCarEnteredTrigger += () => HandleTriggerEnter(second, first);
+            second.OnCarEnteredTrigger += () => HandleTriggerEnter(third, second);
+            third.OnCarEnteredTrigger += () => HandleTriggerEnter(first, third);
         }
 
-        private void HandleFirstTriggerEnter()
+        private void HandleTriggerEnter(GroundTriggerEnterInterceptor planeToBeMoved, GroundTriggerEnterInterceptor planeToPutAfter)
         {
-            _groundTriggerPair.second.GroundTransform.position = _startingPosition + _extensionDistance * _extensionCount * _extensionDirection;
-            _extensionCount++;
-        }
-        
-        private void HandleSecondTriggerEnter()
-        {
-            _groundTriggerPair.first.GroundTransform.position = _startingPosition + _extensionDistance * _extensionCount * _extensionDirection;
-            _extensionCount++;
+            planeToBeMoved.GroundTransform.position = planeToPutAfter.GroundTransform.position + _extensionDistance * _levelOrigin.forward;
         }
     }
 }
