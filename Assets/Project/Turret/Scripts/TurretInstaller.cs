@@ -26,7 +26,7 @@ namespace HoaR.Turret
                                                    .ByNewContextPrefab(_bulletPrefab));
 
             Container.Bind<TurretShooter>().AsSingle().NonLazy();
-            Container.Bind<TurretMover>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<TurretMover>().AsSingle().NonLazy();
         }
     }
 }

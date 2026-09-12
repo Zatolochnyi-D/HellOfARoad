@@ -1,10 +1,11 @@
+using System;
 using HoaR.Game.GameStateManagement;
 using HoaR.HealthSystem.HealthComponent;
 using UnityEngine;
 
 namespace HoaR.Car
 {
-    public class CarAnimator
+    public class CarAnimator: IDisposable
     {
         private static readonly int WHEEL_CLIP_HASH = Animator.StringToHash("WheelRotation");
         private static readonly int SHAKE_CLIP_HASH = Animator.StringToHash("HullShake");
@@ -16,6 +17,7 @@ namespace HoaR.Car
         private readonly Animator _animator;
         private readonly Health _health;
         private readonly CarSettings _settings;
+        private readonly IGameStateManager<GameState> _gameStateManager;
 
         private bool _isReverse = false;
 
@@ -24,8 +26,9 @@ namespace HoaR.Car
             _animator = animator;
             _health = health;
             _settings = settings;
+            _gameStateManager = gameStateManager;
 
-            gameStateManager.OnStateChanged += HandleGameStateChange;
+            _gameStateManager.OnStateChanged += HandleGameStateChange;
         }
 
         private void HandleGameStateChange(GameState newState)
@@ -51,6 +54,11 @@ namespace HoaR.Car
 
                 _isReverse = !_isReverse;
             };            
+        }
+
+        public void Dispose()
+        {
+            _gameStateManager.OnStateChanged += HandleGameStateChange;
         }
     }
 }

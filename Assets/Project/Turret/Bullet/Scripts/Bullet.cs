@@ -1,3 +1,4 @@
+using System;
 using System.Threading;
 using DenZ.DevelopmentTools.Utilities;
 using HoaR.HealthSystem.DamageDealing;
@@ -6,13 +7,14 @@ using Zenject;
 
 namespace HoaR.Turret.Shooting
 {
-    public class Bullet : IPoolable<Transform, IMemoryPool>
+    public class Bullet : IPoolable<Transform, IMemoryPool>, IDisposable
     {
         private readonly BulletSettings _settings;
         private readonly TrailRenderer _trailRenderer;
         private readonly BulletPositionHandler _positionHandler;
         private readonly BulletVisibilityHandler _visibilityHandler;
         private readonly IDamageDealer _damageDealer;
+        private readonly SignalBus _signalBus;
 
         private IMemoryPool _parentPool;
         private CancellationTokenSource _timeOutDespawnCancellation;
@@ -29,9 +31,20 @@ namespace HoaR.Turret.Shooting
             _positionHandler = positionHandler;
             _visibilityHandler = visibilityHandler;
             _damageDealer = damageDealer;
+            _signalBus = signalBus;
 
-            _damageDealer.OnHitTarget += () => _parentPool.Despawn(this);
-            _damageDealer.OnKill += () => signalBus.TryFire<KillSignal>();
+            _damageDealer.OnHitTarget += Despawn;
+            _damageDealer.OnKill += FireKillSignal;
+        }
+
+        private void Despawn()
+        {
+            _parentPool.Despawn(this);
+        }
+
+        private void FireKillSignal()
+        {
+            _signalBus.TryFire<KillSignal>();
         }
 
         public void OnSpawned(Transform spawnPosition, IMemoryPool pool)
@@ -55,6 +68,12 @@ namespace HoaR.Turret.Shooting
             _positionHandler.StopFly();
             _visibilityHandler.Hide();
             _damageDealer.Deactivate();
+        }
+
+        public void Dispose()
+        {
+            _damageDealer.OnHitTarget += Despawn;
+            _damageDealer.OnKill += FireKillSignal;
         }
     }
 }

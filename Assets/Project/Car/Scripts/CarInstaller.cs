@@ -18,10 +18,10 @@ namespace HoaR.Car
 
             Container.BindInterfacesAndSelfTo<CarMover>().AsSingle();
             Container.BindInterfacesAndSelfTo<Health>().AsSingle();
-            Container.Bind<CarHealthListener>().AsSingle().NonLazy();
-            Container.Bind<CarAnimator>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<CarHealthListener>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<CarAnimator>().AsSingle().NonLazy();
 
-            Container.Bind<CarController>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<CarController>().AsSingle().NonLazy();
         }
 
         public class ScoopDamageDealerSettings : IDamageDealerSettings

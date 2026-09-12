@@ -20,7 +20,7 @@ namespace HoaR.Turret.Shooting
             Container.BindInterfacesAndSelfTo<BulletVisibilityHandler>().AsSingle();
             Container.BindInterfacesTo<DamageDealerByRaycast>().AsSingle();
 
-            Container.Bind<Bullet>().AsSingle();
+            Container.BindInterfacesAndSelfTo<Bullet>().AsSingle();
         }
     }
 }

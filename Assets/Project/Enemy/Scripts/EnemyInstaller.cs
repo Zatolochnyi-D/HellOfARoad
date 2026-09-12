@@ -17,10 +17,10 @@ namespace HoaR.Enemies
             Container.BindInterfacesAndSelfTo<EnemySettings>().FromInstance(_enemySettings);
 
             Container.BindInterfacesAndSelfTo<Health>().AsSingle().NonLazy();
-            Container.Bind<DamageDealerMb>().FromComponentInHierarchy().AsSingle();
+            Container.Bind<IDamageDealer>().To<DamageDealerMb>().FromComponentInHierarchy().AsSingle();
             Container.Bind<EnemyStateManager>().AsSingle();
             Container.BindInterfacesAndSelfTo<EnemyAngeringHandler>().AsSingle().NonLazy();
-            Container.Bind<EnemyMover>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<EnemyMover>().AsSingle().NonLazy();
             Container.Bind<Enemy>().AsSingle().NonLazy();
         }
     }

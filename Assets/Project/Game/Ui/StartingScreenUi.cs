@@ -7,7 +7,7 @@ namespace HoaR.Game.Ui
 {
     public class StartingScreenUi : MonoBehaviour, IPointerClickHandler
     {
-        [Inject] private IGameStateManager<GameState> _stateManager;
+        [Inject] private readonly IGameStateManager<GameState> _stateManager;
 
         public void OnPointerClick(PointerEventData eventData)
         {

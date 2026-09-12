@@ -21,6 +21,11 @@ namespace HoaR.Game.Ui
             _goalChecker.OnDistanceChanged += HandleDistanceChange;
         }
 
+        void OnDestroy()
+        {
+            _goalChecker.OnDistanceChanged -= HandleDistanceChange;
+        }
+
         private void HandleDistanceChange(float normalizedDistance)
         {
             _fillableImage.fillAmount = normalizedDistance;

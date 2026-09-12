@@ -1,9 +1,10 @@
+using System;
 using HoaR.Game.GameStateManagement;
 using UnityEngine;
 
 namespace HoaR.Car
 {
-    public class CarController
+    public class CarController : IDisposable
     {
         private readonly IGameStateManager<GameState> _stateManager;
         private readonly CarMover _carMover;
@@ -27,6 +28,11 @@ namespace HoaR.Car
                     Debug.LogWarning("CarController got unhandled state");
                     break;
             }
+        }
+
+        public void Dispose()
+        {
+            _stateManager.OnStateChanged -= HandleStateChange;
         }
     }
 }

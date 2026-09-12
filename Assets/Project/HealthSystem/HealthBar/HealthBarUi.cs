@@ -14,7 +14,12 @@ namespace HoaR.HealthSystem.HealthComponent
             _health.OnDamageReceived += HandleDamageReceived;
             _fillableImage.fillAmount = 1f;
         }
-        
+
+        void OnDestroy()
+        {
+            _health.OnDamageReceived -= HandleDamageReceived;
+        }
+
         private void HandleDamageReceived(float normalizedHealth)
         {
             _fillableImage.fillAmount = normalizedHealth;

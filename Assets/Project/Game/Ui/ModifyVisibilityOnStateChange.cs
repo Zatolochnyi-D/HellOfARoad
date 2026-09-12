@@ -11,7 +11,18 @@ namespace HoaR.Game.Ui
         void Start()
         {
             gameObject.SetActive(false);
-            _stateManager.OnStateChanged += state => { if (state == GameState.Playing) gameObject.SetActive(true); };
+            _stateManager.OnStateChanged += HandleStateChange;
+        }
+
+        void OnDestroy()
+        {
+            _stateManager.OnStateChanged -= HandleStateChange;
+        }
+
+        private void HandleStateChange(GameState newState)
+        {
+            if (newState == GameState.Playing) 
+                gameObject.SetActive(true);
         }
     }
 }
