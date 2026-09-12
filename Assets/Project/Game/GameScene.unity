@@ -1794,6 +1794,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1356466638}
   - component: {fileID: 1356466639}
+  - component: {fileID: 1356466640}
   m_Layer: 5
   m_Name: GameEnd
   m_TagString: Untagged
@@ -1837,6 +1838,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: HoaR.Game::HoaR.LevelManagement.GameEndUi
   _gameWinScreenRoot: {fileID: 2064366592}
   _gameLoseScreenRoot: {fileID: 1803972851}
+--- !u!225 &1356466640
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1356466637}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1444045361
 GameObject:
   m_ObjectHideFlags: 0
