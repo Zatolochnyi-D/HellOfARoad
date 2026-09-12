@@ -1,9 +1,10 @@
+using System;
 using System.Threading;
 using UnityEngine;
 
 namespace HoaR.Enemies
 {
-    public class EnemyMover
+    public class EnemyMover : IDisposable
     {
         private readonly Transform _selfTransform;
         private readonly IEnemyTarget _target;
@@ -50,6 +51,12 @@ namespace HoaR.Enemies
                 default:
                     break;
             }
+        }
+
+        public void Dispose()
+        {
+            _stateManager.OnStateChanged -= HandleStateChange;
+            _runningLoopCancellation?.Cancel();
         }
     }
 }
