@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace HoaR.HealthSystem.DamageDealing
 {
-    public class DamageDealerByRaycast : IDamageDealer
+    public class DamageDealerByRaycast : IDamageDealer, IDisposable
     {
         private static readonly RaycastHit[] RAYCAST_BUFFER = new RaycastHit[1];
 
@@ -77,6 +77,11 @@ namespace HoaR.HealthSystem.DamageDealing
         {
             _raycastLoopCancellation?.Cancel();
             _raycastLoopCancellation = null;
+        }
+
+        public void Dispose()
+        {
+            Deactivate();
         }
     }
 }
