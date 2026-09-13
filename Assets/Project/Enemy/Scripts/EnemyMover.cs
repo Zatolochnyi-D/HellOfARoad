@@ -10,15 +10,17 @@ namespace HoaR.Enemies
         private readonly IEnemyTarget _target;
         private readonly EnemyStateManager _stateManager;
         private readonly EnemySettings _settings;
+        private readonly EnemyAnimator _animator;
 
         private CancellationTokenSource _runningLoopCancellation;
 
-        public EnemyMover(Transform selfTransform, IEnemyTarget target, EnemyStateManager stateManager, EnemySettings settings)
+        public EnemyMover(Transform selfTransform, IEnemyTarget target, EnemyStateManager stateManager, EnemySettings settings, EnemyAnimator animator)
         {
             _selfTransform = selfTransform;
             _target = target;
             _stateManager = stateManager;
             _settings = settings;
+            _animator = animator;
 
             _stateManager.OnStateChanged += HandleStateChange;
         }
@@ -44,6 +46,7 @@ namespace HoaR.Enemies
                 case EnemyState.Angered:
                     _runningLoopCancellation = new();
                     RunningLoop(_runningLoopCancellation.Token);
+                    _animator.StartRunning();
                     break;
                 case EnemyState.Dead:
                     _runningLoopCancellation?.Cancel();
