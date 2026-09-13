@@ -17,6 +17,7 @@ namespace HoaR.Turret
             Container.BindInstance(_turretMoverSettings);
             Container.BindInstance<BulletSpawnPosition>(new(_bulletSpawnPosition));
             Container.BindInstance(_turretShooterSettings);
+            Container.Bind<Animator>().FromComponentInHierarchy().AsSingle();
 
             Container.BindFactory<Transform, Bullet, BulletFactory>()
                      .FromPoolableMemoryPool(x => x.WithInitialSize(15)
@@ -26,6 +27,7 @@ namespace HoaR.Turret
                                                    .ByNewContextPrefab(_bulletPrefab));
 
             Container.Bind<TurretShooter>().AsSingle().NonLazy();
+            Container.Bind<TurretAnimator>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<TurretMover>().AsSingle().NonLazy();
         }
     }
