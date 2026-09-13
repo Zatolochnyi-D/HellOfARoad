@@ -1,19 +1,19 @@
 using HoaR.GoalChecking;
+using HoaR.Utilities;
 using UnityEngine;
-using UnityEngine.UI;
 using Zenject;
 
 namespace HoaR.Game.Ui
 {
     public class ProgressBarUi : MonoBehaviour
     {
-        [SerializeField] private Image _fillableImage;
+        [SerializeField] private ProgressBarMask _bar;
 
         [Inject] private readonly GoalChecker _goalChecker;
 
         void Awake()
         {
-            _fillableImage.fillAmount = 0f;
+            _bar.SetFill(0f);
         }
 
         void Start()
@@ -28,7 +28,7 @@ namespace HoaR.Game.Ui
 
         private void HandleDistanceChange(float normalizedDistance)
         {
-            _fillableImage.fillAmount = normalizedDistance;
+            _bar.SetFill(normalizedDistance);
         }
     }
 }
