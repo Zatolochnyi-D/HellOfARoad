@@ -15,8 +15,9 @@ namespace HoaR.Car
             Container.BindInterfacesAndSelfTo<CarSettings>().FromInstance(_carSettings);
             Container.Bind<IDamageDealerSettings>().To<ScoopDamageDealerSettings>().AsSingle();
             Container.Bind<Animator>().FromComponentInHierarchy().AsSingle();
+            Container.BindInstance(destroyCancellationToken);
 
-            Container.BindInterfacesAndSelfTo<CarMover>().AsSingle();
+            Container.Bind<CarMover>().AsSingle();
             Container.BindInterfacesAndSelfTo<Health>().AsSingle();
             Container.BindInterfacesAndSelfTo<CarHealthListener>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<CarAnimator>().AsSingle().NonLazy();

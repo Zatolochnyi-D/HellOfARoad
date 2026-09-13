@@ -16,3 +16,4 @@ MonoBehaviour:
   _movementSpeed: 15
   _maxHealthPoints: 100
   _wheelRadius: 0.72
+  _timeToStopCarAfterGameEnd: 2

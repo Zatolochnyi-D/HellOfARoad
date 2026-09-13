@@ -24,6 +24,11 @@ namespace HoaR.Car
                 case GameState.Playing:
                     _carMover.Enable();
                     break;
+                case GameState.GameWon:
+                case GameState.GameLost:
+                    _carMover.Disable();
+                    _carMover.StopGradually();
+                    break;
                 default:
                     Debug.LogWarning("CarController got unhandled state");
                     break;

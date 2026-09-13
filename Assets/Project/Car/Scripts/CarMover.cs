@@ -1,36 +1,59 @@
+using System;
+using System.ComponentModel;
+using System.Security.Principal;
+using System.Threading;
+using DenZ.DevelopmentTools.Utilities;
+using DG.Tweening;
 using UnityEngine;
-using Zenject;
 
 namespace HoaR.Car
 {
-    public class CarMover : ITickable
+    public class CarMover
     {
         private readonly Transform _carTransform;
         private readonly CarSettings _carSettings;
+        private readonly CancellationToken _destroyCancellationToken;
 
-        private bool _isActive = false;
+        private CancellationTokenSource _movementCycleCancellation;
 
-        public CarMover(Transform carTransform, CarSettings carSettings)
+        public CarMover(Transform carTransform, CarSettings carSettings, CancellationToken destroyCancellationToken)
         {
             _carTransform = carTransform;
             _carSettings = carSettings;
+            _destroyCancellationToken = destroyCancellationToken;
+        }
+
+        private void MoveForward(float speed)
+        {
+            _carTransform.position += Time.deltaTime * speed * _carSettings.GeneralMovementVector;
+        }
+
+        private void MoveForward(Func<float> speedGetter)
+        {
+            _carTransform.position += Time.deltaTime * speedGetter() * _carSettings.GeneralMovementVector;
         }
 
         public void Enable()
         {
-            _isActive = true;
+            _movementCycleCancellation = new();
+            _ = Timers.InvokeEachFrameIndefinitely(() => MoveForward(_carSettings.MovementSpeed), _movementCycleCancellation.Token, true);
         }
 
         public void Disable()
         {
-            _isActive = false;
+            _movementCycleCancellation?.Cancel();
+            _movementCycleCancellation = null;
         }
 
-        public void Tick()
+        public void StopGradually()
         {
-            if (!_isActive)
-                return;
-            _carTransform.position += Time.deltaTime * _carSettings.MovementSpeed * _carSettings.GeneralMovementVector;
+            var currentSpeed = _carSettings.MovementSpeed;
+            var smoothStopTween = DOTween.To(() => currentSpeed, value => currentSpeed = value, 0f, _carSettings.TimeToStopCarAfterGameEnd).OnUpdate(() => MoveForward(() => currentSpeed));
+            _destroyCancellationToken.Register(() =>
+            {
+                if (smoothStopTween.IsActive())
+                    smoothStopTween.Kill();
+            });
         }
     }
 }
