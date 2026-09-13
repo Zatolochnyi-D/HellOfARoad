@@ -20,6 +20,9 @@ namespace HoaR.Utilities
         [SerializeField] private FillDirection _fillDirection;
 
         private Action<float> _fillFunc;
+        private float _fillAmount;
+
+        public float FillAmount => _fillAmount;
 
         void Awake()
         {
@@ -29,10 +32,14 @@ namespace HoaR.Utilities
                 FillDirection.Up => fill => _mask.padding = _mask.padding.With(w: _self.rect.size.y * (1f - fill)),
                 _ => throw FastExeptions.NonExistentEnumValue<FillDirection>(),
             };
+
+            _fillAmount = 0f;
+            _fillFunc(_fillAmount);
         }
 
         public void SetFill(float fill)
         {
+            _fillAmount = fill;
             _fillFunc(fill);
         }
     }

@@ -11,13 +11,9 @@ namespace HoaR.Game.Ui
 
         [Inject] private readonly GoalChecker _goalChecker;
 
-        void Awake()
-        {
-            _bar.SetFill(0f);
-        }
-
         void Start()
         {
+            _bar.SetFill(0f);
             _goalChecker.OnDistanceChanged += HandleDistanceChange;
         }
 
