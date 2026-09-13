@@ -18,6 +18,7 @@ namespace HoaR.Turret
             Container.BindInstance<BulletSpawnPosition>(new(_bulletSpawnPosition));
             Container.BindInstance(_turretShooterSettings);
             Container.Bind<Animator>().FromComponentInHierarchy().AsSingle();
+            Container.Bind<ParticleSystem>().FromComponentInHierarchy().AsSingle();
 
             Container.BindFactory<Transform, Bullet, BulletFactory>()
                      .FromPoolableMemoryPool(x => x.WithInitialSize(15)

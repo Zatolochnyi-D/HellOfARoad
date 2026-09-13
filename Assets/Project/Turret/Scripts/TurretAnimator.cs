@@ -10,12 +10,14 @@ namespace HoaR.Turret
         private readonly Animator _animator;
         private readonly TurretShooterSettings _settings;
         private readonly TurretShooter _shooter;
+        private readonly ParticleSystem _muzzleFireParticles;
 
-        public TurretAnimator(Animator animator, TurretShooterSettings settings, TurretShooter shooter)
+        public TurretAnimator(Animator animator, TurretShooterSettings settings, TurretShooter shooter, ParticleSystem muzzleFireParticles)
         {
             _animator = animator;
             _settings = settings;
             _shooter = shooter;
+            _muzzleFireParticles = muzzleFireParticles;
 
             _shooter.OnShoot += PlayShootAnimation;
         }
@@ -24,6 +26,7 @@ namespace HoaR.Turret
         {
             _animator.speed = _settings.FireRate;
             _animator.Play(SHOOT_ANIMATION_HASH, 0, 0f);
+            _muzzleFireParticles.Play();
         }
 
         public void Dispose()
