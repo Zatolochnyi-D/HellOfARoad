@@ -15,14 +15,17 @@ namespace HoaR.LevelManagement
         [Inject] private readonly SignalBus _signalBus;
         [Inject] private readonly IGameStateManager<GameState> _gameStateManager;
 
+        void Awake()
+        {
+            _signalBus.Subscribe<PlayerDeadSignal>(HandlePlayerDeadSignal);
+            _signalBus.Subscribe<PlayerReachedDestinationSignal>(HandlePlayerReachedDestinationSignal);
+        }
+
         void Start()
         {
             gameObject.SetActive(false);
             _gameWinScreenRoot.SetActive(false);
             _gameLoseScreenRoot.SetActive(false);
-
-            _signalBus.Subscribe<PlayerDeadSignal>(HandlePlayerDeadSignal);
-            _signalBus.Subscribe<PlayerReachedDestinationSignal>(HandlePlayerReachedDestinationSignal);
         }
 
         void OnDestroy()
