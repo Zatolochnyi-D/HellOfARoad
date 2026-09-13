@@ -1019,6 +1019,7 @@ MonoBehaviour:
   _firstGroundTrigger: {fileID: 228177778}
   _secongGroundTrigger: {fileID: 98666578}
   _thirdGroundTrigger: {fileID: 2134860216}
+  _healthBarTweeningSettings: {fileID: 11400000, guid: 47dc1849f752442399348237111b800d, type: 2}
 --- !u!4 &696055882 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1451399530949822699, guid: 452f6a215e7714ce3a0c71b503158b2a, type: 3}

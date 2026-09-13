@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using DG.Tweening;
 using HoaR.Utilities;
 using UnityEngine;
@@ -9,6 +10,9 @@ namespace HoaR.HealthSystem.HealthComponent
     {
         [SerializeField] private ProgressBarMask _fillableBar;
         [Inject] private readonly Health _health;
+        [Inject] private readonly HealthBarTweeningSettings _settings;
+
+        private readonly List<Tweener> _tweenersToKill = new();
 
         void Start()
         {
@@ -18,12 +22,15 @@ namespace HoaR.HealthSystem.HealthComponent
 
         void OnDestroy()
         {
+            _tweenersToKill.ForEach(x => x.Kill());
             _health.OnDamageReceived -= HandleDamageReceived;
         }
 
         private void HandleDamageReceived(float normalizedHealth)
         {
-            DOTween.To(() => _fillableBar.FillAmount, fill => _fillableBar.SetFill(fill), normalizedHealth, 0.25f).SetEase(Ease.OutCirc);
+            var tween = DOTween.To(() => _fillableBar.FillAmount, fill => _fillableBar.SetFill(fill), normalizedHealth, _settings.TimeForOneTween).SetEase(Ease.OutCirc);
+            _tweenersToKill.Add(tween);
+            tween.OnComplete(() => _tweenersToKill.Remove(tween));
         }
     }
 }

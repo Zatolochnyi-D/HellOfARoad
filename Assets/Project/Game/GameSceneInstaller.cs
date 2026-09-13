@@ -1,9 +1,11 @@
+using System.Runtime.ExceptionServices;
 using HoaR.Car;
 using HoaR.Enemies;
 using HoaR.Game.GameStateManagement;
 using HoaR.Game.LevelManagement;
 using HoaR.GoalChecking;
 using HoaR.Ground;
+using HoaR.HealthSystem;
 using HoaR.InputManagement;
 using HoaR.LevelManagement;
 using HoaR.Turret;
@@ -25,11 +27,16 @@ namespace HoaR.Game
         [SerializeField] private GroundTriggerEnterInterceptor _secongGroundTrigger;
         [SerializeField] private GroundTriggerEnterInterceptor _thirdGroundTrigger;
 
+        [Header("Health bars")]
+        [SerializeField] private HealthBarTweeningSettings _healthBarTweeningSettings;
+
         public override void InstallBindings()
         {
             Container.BindInstance(_levelSettings);
 
             Container.BindInstance<LevelOrigin>(new(_levelOriginPosition));
+
+            Container.BindInstance(_healthBarTweeningSettings);
 
             Container.BindInstance<CarTransform>(new(_carTransform));
             Container.Bind<IEnemyTarget>().To<CarTransform>().FromResolve();

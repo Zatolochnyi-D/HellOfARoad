@@ -13,7 +13,6 @@ namespace HoaR.Enemies
         private readonly EnemyAnimator _animator;
 
         private CancellationTokenSource _runningLoopCancellation;
-        private bool _lockDown = false;
 
         public EnemyMover(Transform selfTransform,
                           IEnemyTarget target,
