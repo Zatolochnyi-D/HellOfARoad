@@ -6,6 +6,8 @@ namespace HoaR.Game.GameStateManagement
     {
         public event Action<T> OnStateChanged;
 
+        public T CurrentState { get; }
+
         public void ChangeState(T newState);
     }
 }

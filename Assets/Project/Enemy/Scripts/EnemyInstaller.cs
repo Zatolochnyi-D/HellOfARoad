@@ -22,8 +22,9 @@ namespace HoaR.Enemies
             Container.Bind<IDamageDealer>().To<DamageDealerMb>().FromComponentInHierarchy().AsSingle();
             Container.Bind<EnemyStateManager>().AsSingle();
             Container.BindInterfacesAndSelfTo<EnemyAngeringHandler>().AsSingle().NonLazy();
-            Container.BindInterfacesAndSelfTo<EnemyAnimator>().AsSingle();
+            Container.Bind<EnemyAnimator>().AsSingle();
             Container.BindInterfacesAndSelfTo<EnemyMover>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<EnemyGameStateHandler>().AsSingle().NonLazy();
             Container.Bind<Enemy>().AsSingle().NonLazy();
         }
     }

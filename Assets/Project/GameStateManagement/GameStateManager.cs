@@ -8,6 +8,8 @@ namespace HoaR.Game.GameStateManagement
 
         private GameState _gameState = GameState.PreGame;
 
+        public GameState CurrentState => _gameState;
+
         public void ChangeState(GameState newState)
         {
             if (_gameState != newState)

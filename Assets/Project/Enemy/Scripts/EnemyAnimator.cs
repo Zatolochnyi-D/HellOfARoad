@@ -1,11 +1,9 @@
 using System.Threading;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using Zenject;
 
 namespace HoaR.Enemies
 {
-    public class EnemyAnimator : ITickable
+    public class EnemyAnimator
     {
         private static readonly int IDLE_RUN_PARAMETER_HASH = Animator.StringToHash("IdleRun");
 
@@ -18,26 +16,25 @@ namespace HoaR.Enemies
             _destroyCancellationToken = destroyCancellationToken;
         }
 
-        private async void SetIdleRunFloat(CancellationToken token)
+        private async void SetIdleRunFloat(bool forward, CancellationToken token)
         {
-            while (!token.IsCancellationRequested && _animator.GetFloat(IDLE_RUN_PARAMETER_HASH) != 1f)
+            var target = forward ? 1f : 0f;
+            var step = forward ? 0.1f : -0.1f;
+            while (!token.IsCancellationRequested && _animator.GetFloat(IDLE_RUN_PARAMETER_HASH) != target)
             {
-                _animator.SetFloat(IDLE_RUN_PARAMETER_HASH, 1f, 0.1f, Time.deltaTime);
+                _animator.SetFloat(IDLE_RUN_PARAMETER_HASH, target, step, Time.deltaTime);
                 await Awaitable.NextFrameAsync();
             }
         }
-        
+
         public void StartRunning()
         {
-            SetIdleRunFloat(_destroyCancellationToken);
+            SetIdleRunFloat(true, _destroyCancellationToken);
         }
-
-        public void Tick()
+        
+        public void StopRunning()
         {
-            if (Keyboard.current.spaceKey.IsPressed())
-            {
-                _animator.Play("Attack", 1, 0f);
-            }
+            SetIdleRunFloat(false, _destroyCancellationToken);
         }
     }
 }
