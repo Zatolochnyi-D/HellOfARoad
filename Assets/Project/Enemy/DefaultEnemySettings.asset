@@ -16,7 +16,8 @@ MonoBehaviour:
   _angeringDistance: 10
   _runSpeed: 4
   _turnAroundTime: 0.5
-  _damageToCar: 2
+  _damageToCar: 10
   _triggerAttackOn:
     serializedVersion: 2
     m_Bits: 512
+  _timeBeforeRemovingEnemyOnDeath: 1

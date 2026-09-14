@@ -1013,7 +1013,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba1a1d2f375ef495694cbbf0099a6c9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameSceneInstaller
-  _levelSettings: {fileID: 11400000, guid: 21038f5122106440e8e0b729b1eba943, type: 2}
+  _levelSettings: {fileID: 11400000, guid: b885711a2447e44608662947528f2d3a, type: 2}
   _levelOriginPosition: {fileID: 408413383}
   _carTransform: {fileID: 640096080}
   _firstGroundTrigger: {fileID: 228177778}
