@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using DenZ.DevelopmentTools.Extensions;
 using HoaR.HealthSystem.HealthComponent;
+using HoaR.Utilities;
 using UnityEngine;
 
 namespace HoaR.Car

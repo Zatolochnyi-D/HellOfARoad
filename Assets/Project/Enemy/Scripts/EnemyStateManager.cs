@@ -8,6 +8,8 @@ namespace HoaR.Enemies
 
         private EnemyState _currentState = EnemyState.Idle;
 
+        public EnemyState CurrentState => _currentState;
+
         public void SwitchState(EnemyState newState)
         {
             if (newState != _currentState)

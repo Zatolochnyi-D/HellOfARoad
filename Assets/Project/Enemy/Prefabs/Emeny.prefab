@@ -135,6 +135,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: HoaR.Enemy::EnemyInstaller
   _enemySettings: {fileID: 11400000, guid: 69b820228befd426c91ab7fd0eb0ee2b, type: 2}
+  _objectsToDisable:
+    GameObjects:
+    - {fileID: 3642976551062869824}
+    - {fileID: 7699118326441924637}
+    - {fileID: 1359957591269927239}
 --- !u!54 &-4578815278612784252
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -1,17 +1,11 @@
-using System.Collections.Generic;
 using HoaR.HealthSystem.DamageDealing;
 using HoaR.HealthSystem.HealthComponent;
+using HoaR.Utilities;
 using UnityEngine;
 using Zenject;
 
 namespace HoaR.Car
 {
-    [System.Serializable]
-    public struct ObjectsToDisable
-    {
-        public List<GameObject> GameObjects;
-    }
-
     public class CarInstaller : MonoInstaller
     {
         [SerializeField] private CarSettings _carSettings;
