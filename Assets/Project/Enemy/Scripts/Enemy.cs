@@ -40,7 +40,7 @@ namespace HoaR.Enemies
 
         private void KillOnTouch()
         {
-            _health.ReceiveRelativeDamage(1f);
+            _health.ReceiveRelativeDamage(new() { RelativeDamage = 1f, HitForward = -_self.transform.forward });
         }
 
         private void Die()

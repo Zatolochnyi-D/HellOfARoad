@@ -3,7 +3,7 @@ using System.Threading;
 using DenZ.DevelopmentTools.Di;
 using DenZ.DevelopmentTools.Options;
 using DenZ.DevelopmentTools.Utilities;
-using HoaR.HealthSystem.HealthComponent;
+using HoaR.HealthSystem.Damage;
 using UnityEngine;
 
 namespace HoaR.HealthSystem.DamageDealing
@@ -46,9 +46,9 @@ namespace HoaR.HealthSystem.DamageDealing
                     {
                         var isKill = false;
                         if (_settings.IsRelative)
-                            isKill = x.ReceiveRelativeDamage(_settings.RelativeDamage);
+                            isKill = x.ReceiveRelativeDamage(new() { RelativeDamage = _settings.RelativeDamage, HitForward = _selfTransform.forward });
                         else
-                            isKill = x.ReceiveAbsoluteDamage(_settings.Damage);
+                            isKill = x.ReceiveAbsoluteDamage(new() { AbsoluteDamage = _settings.Damage, HitForward = _selfTransform.forward });
                         OnHitTarget?.Invoke();
                         if (isKill)
                             OnKill?.Invoke();

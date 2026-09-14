@@ -20,6 +20,7 @@ namespace HoaR.Enemies
             
             Container.BindInterfacesAndSelfTo<EnemySettings>().FromInstance(_enemySettings);
             Container.Bind<Animator>().FromComponentInHierarchy().AsSingle();
+            Container.Bind<ParticleSystem>().FromComponentInHierarchy().AsSingle();
 
             Container.BindInterfacesAndSelfTo<Health>().AsSingle().NonLazy();
             Container.Bind<IDamageDealer>().To<DamageDealerMb>().FromComponentInHierarchy().AsSingle();
@@ -28,6 +29,7 @@ namespace HoaR.Enemies
             Container.Bind<EnemyAnimator>().AsSingle();
             Container.BindInterfacesAndSelfTo<EnemyMover>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<EnemyGameStateHandler>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<EnemyHitHandler>().AsSingle().NonLazy();
             Container.Bind<Enemy>().AsSingle().NonLazy();
         }
     }

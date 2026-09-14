@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using DG.Tweening;
+using HoaR.HealthSystem.Damage;
 using HoaR.Utilities;
 using UnityEngine;
 using Zenject;
@@ -26,9 +27,9 @@ namespace HoaR.HealthSystem.HealthComponent
             _health.OnDamageReceived -= HandleDamageReceived;
         }
 
-        private void HandleDamageReceived(float normalizedHealth)
+        private void HandleDamageReceived(DamageReceivedInfo info)
         {
-            var tween = DOTween.To(() => _fillableBar.FillAmount, fill => _fillableBar.SetFill(fill), normalizedHealth, _settings.TimeForOneTween).SetEase(Ease.OutCirc);
+            var tween = DOTween.To(() => _fillableBar.FillAmount, fill => _fillableBar.SetFill(fill), info.NormalizedHealthLeft, _settings.TimeForOneTween).SetEase(Ease.OutCirc);
             _tweenersToKill.Add(tween);
             tween.OnComplete(() => _tweenersToKill.Remove(tween));
         }
