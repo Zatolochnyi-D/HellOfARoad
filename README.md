@@ -4,4 +4,4 @@ Demo project, casual game about shooting enemies while cruising to the destinati
 
 Unity 3D, Extenject DI.
 
-[Gameplay video](https://google.com)
+[Gameplay video](https://youtube.com/shorts/1svtESZMHJw)
