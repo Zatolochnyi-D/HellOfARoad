@@ -39,8 +39,8 @@ namespace HoaR.Utilities
 
         public void SetFill(float fill)
         {
-            _fillAmount = fill;
-            _fillFunc(fill);
+            _fillAmount = Mathf.Clamp01(fill);
+            _fillFunc(_fillAmount);
         }
     }
 }

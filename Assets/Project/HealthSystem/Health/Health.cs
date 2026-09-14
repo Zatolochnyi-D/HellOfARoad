@@ -23,14 +23,15 @@ namespace HoaR.HealthSystem.HealthComponent
 
         public bool ReceiveAbsoluteDamage(int damage)
         {
+            var isKill = false;
             _currentHealth -= damage;
             if (_currentHealth <= 0)
             {
                 OnHealthDepleted?.Invoke();
-                return true;
+                isKill = true;
             }
             OnDamageReceived?.Invoke(NormalizedHealthPoints);
-            return false;
+            return isKill;
         }
 
         public bool ReceiveRelativeDamage(float damage)

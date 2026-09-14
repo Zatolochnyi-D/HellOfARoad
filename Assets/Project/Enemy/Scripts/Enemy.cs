@@ -35,7 +35,12 @@ namespace HoaR.Enemies
             _settings = settings;
 
             _health.OnHealthDepleted += Die;
-            _damageDealer.OnHitTarget += Die;
+            _damageDealer.OnHitTarget += KillOnTouch;
+        }
+
+        private void KillOnTouch()
+        {
+            _health.ReceiveRelativeDamage(1f);
         }
 
         private void Die()
@@ -48,7 +53,7 @@ namespace HoaR.Enemies
         public void Dispose()
         {
             _health.OnHealthDepleted -= Die;
-            _damageDealer.OnHitTarget -= Die;
+            _damageDealer.OnHitTarget -= KillOnTouch;
         }
     }
 }
