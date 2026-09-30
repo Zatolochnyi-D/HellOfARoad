@@ -115,6 +115,3 @@ InitTestScene*.unity*
 
 .DS_Store
 /.vscode/
-/[Aa]ssets/Plugins/Zenject
-/[Aa]ssets/TextMesh Pro
-/[Aa]ssets/Plugins/Demigiant
